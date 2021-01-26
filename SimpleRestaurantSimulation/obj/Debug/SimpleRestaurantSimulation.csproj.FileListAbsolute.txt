@@ -1,0 +1,9 @@
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe.config
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.pdb
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojResolveAssemblyReference.cache
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Form1.resources
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Properties.Resources.resources
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.Cache
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
+c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
