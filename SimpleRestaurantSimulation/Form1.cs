@@ -21,25 +21,51 @@ namespace SimpleRestaurantSimulation
 
         private void submitNewRequest_Click(object sender, EventArgs e)
         {
-            employee = new Employee();
-            string itemMenu = "chicken";
-            if (egg.Checked)
+            try
             {
-                itemMenu = "egg";
+                employee = new Employee();
+                string itemMenu = "chicken";
+                if (egg.Checked)
+                {
+                    itemMenu = "egg";
+                }
+                o = employee.NewRequest(int.Parse(textQuantity.Text.ToString()), itemMenu);
+                TextQualityResult.Text = employee.Inspect(o);
             }
-            o= employee.NewRequest(int.Parse(textQuantity.Text.ToString()), itemMenu);
-            TextQualityResult.Text= employee.Inspect(o);
+            catch (Exception ex)
+            {
+                textResult.Text = ex.Message;
+            }
+            
         }
 
         private void copyThePreviousRequest_Click(object sender, EventArgs e)
         {
-            o = employee.CopyRequest();
-            TextQualityResult.Text = employee.Inspect(o);
+            try
+            {
+                o = employee.CopyRequest();
+                TextQualityResult.Text = employee.Inspect(o);
+            }
+            catch (Exception ex)
+            {
+
+                textResult.Text = ex.Message;
+            }
+            
         }
 
         private void prepareFood_Click(object sender, EventArgs e)
         {
-            textResult.Text = employee.PrepareFood(o);
+            try
+            {
+                textResult.Text = employee.PrepareFood(o);
+            }
+            catch (Exception ex)
+            {
+
+                textResult.Text = ex.Message;
+            }
+            
         }
     }
 }
