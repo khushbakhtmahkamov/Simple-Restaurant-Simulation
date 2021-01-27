@@ -12,7 +12,7 @@ namespace SimpleRestaurantSimulation
 {
     public partial class Form1 : Form
     {
-        Employee employee = new Employee();
+        Employee employee;
         Object o;
         public Form1()
         {
@@ -21,6 +21,7 @@ namespace SimpleRestaurantSimulation
 
         private void submitNewRequest_Click(object sender, EventArgs e)
         {
+            employee = new Employee();
             string itemMenu = "chicken";
             if (egg.Checked)
             {

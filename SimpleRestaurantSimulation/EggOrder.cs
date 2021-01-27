@@ -16,12 +16,11 @@ namespace SimpleRestaurantSimulation
         {
             this.quantity = quantity;
             NumEggOrder++;
-            GetQuality();
         }
 
         public int GetQuantity()=> this.quantity;
 
-        private int? GetQuality()
+        public int? GetQuality()
         {
             if (NumEggOrder % 2 == 0)
             {
