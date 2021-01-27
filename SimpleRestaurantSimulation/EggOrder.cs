@@ -10,31 +10,34 @@ namespace SimpleRestaurantSimulation
     {
         private int quantity;
         public static int NumEggOrder = 0;
+        private int? quality;
 
         public EggOrder(int quantity)
         {
             this.quantity = quantity;
             NumEggOrder++;
+            GetQuality();
         }
 
         public int GetQuantity()=> this.quantity;
 
-        public int? GetQuality()
+        private int? GetQuality()
         {
             if (NumEggOrder % 2 == 0)
             {
-                return null;
+                quality= null;
             }
             else
             {
                 Random rand = new Random();
-                return rand.Next(101);
+                quality= rand.Next(101);
             }
+            return quality;
         }
 
         public void Crack()
         {
-            if (GetQuality() < 25)
+            if (quality < 25)
             {
                 throw new ArgumentOutOfRangeException("Bad quality");
             }
