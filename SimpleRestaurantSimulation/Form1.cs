@@ -23,6 +23,7 @@ namespace SimpleRestaurantSimulation
         {
             try
             {
+                //TODO: You should not create new Employee everytime when you click submit button. It should be only one enployee.
                 employee = new Employee();
                 string itemMenu = "chicken";
                 if (egg.Checked)
@@ -53,7 +54,7 @@ namespace SimpleRestaurantSimulation
             }
             
         }
-
+        //TODO: I clicked this button twice and I'm getting this message in resultbox: "Exception of type 'System.Exception' was thrown.". This message is not clear. Please correct this.
         private void prepareFood_Click(object sender, EventArgs e)
         {
             try

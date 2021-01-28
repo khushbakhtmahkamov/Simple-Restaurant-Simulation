@@ -22,6 +22,7 @@ namespace SimpleRestaurantSimulation
 
         public int? GetQuality()
         {
+            //TODO: Everytime when you call this method it should return the same value per the instance of the EggOrder
             if (NumEggOrder % 2 == 0)
             {
                 quality= null;

@@ -11,7 +11,7 @@ namespace SimpleRestaurantSimulation
         public static int NumEmployee = 0;
         private Object objectOrder;
         private int prepared = 0;
-        
+
 
         public Employee()
         {
@@ -20,9 +20,10 @@ namespace SimpleRestaurantSimulation
 
         public object NewRequest(int quantity, string menuItem)
         {
-           if(NumEmployee % 3 == 0)
+            //TODO: NumEmployee is not correct. You should check number of requests.
+            if (NumEmployee % 3 == 0)
             {
-                if(menuItem == "egg")
+                if (menuItem == "egg")
                 {
                     menuItem = "chicken";
                 }
@@ -31,7 +32,7 @@ namespace SimpleRestaurantSimulation
                     menuItem = "egg";
                 }
             }
-            
+
             if (menuItem == "egg")
             {
                 EggOrder eggOrder = new EggOrder(quantity);
@@ -52,6 +53,8 @@ namespace SimpleRestaurantSimulation
             {
                 throw new Exception();
             }
+
+            //TODO: Please complete this copying method...
             Object o;
             o = objectOrder;
             if (objectOrder is EggOrder)
@@ -67,15 +70,15 @@ namespace SimpleRestaurantSimulation
 
         public string Inspect(object ob)
         {
-            
-            if(ob is ChickenOrder)
+
+            if (ob is ChickenOrder)
             {
                 return "no inspection is required";
             }
             else
             {
                 EggOrder eggOrder = (EggOrder)ob;
-                return "Egg Quality:"+eggOrder.GetQuality();
+                return "Egg Quality:" + eggOrder.GetQuality();
             }
         }
 
@@ -88,10 +91,10 @@ namespace SimpleRestaurantSimulation
 
             prepared = 1;
 
-            if(ob is ChickenOrder)
+            if (ob is ChickenOrder)
             {
                 ChickenOrder chickOrder = (ChickenOrder)ob;
-                
+
                 for (int i = 1; i <= chickOrder.GetQuantity(); i++)
                 {
                     chickOrder.CutUp();
@@ -113,11 +116,11 @@ namespace SimpleRestaurantSimulation
                     {
                         countRottenEggs++;
                     }
-                    
+
                     eggOrder.DiscardShell();
                 }
                 eggOrder.Cook();
-                return "Preparation has been completed. Number of rotten eggs-"+ countRottenEggs;
+                return "Preparation has been completed. Number of rotten eggs-" + countRottenEggs;
             }
         }
 

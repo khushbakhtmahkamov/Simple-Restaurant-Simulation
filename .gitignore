@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SimpleRestaurantSimulation/obj/Release/.NETFramework,Version=v4.5.2.AssemblyAttributes.cs
+/SimpleRestaurantSimulation/obj/Release
+/SimpleRestaurantSimulation/obj/Debug/SimpleRestaurantSimulation.csprojAssemblyReference.cache
+/SimpleRestaurantSimulation/obj/Debug/.NETFramework,Version=v4.5.2.AssemblyAttributes.cs
+/SimpleRestaurantSimulation/obj/Debug
+/SimpleRestaurantSimulation/obj
+/.vs/slnx.sqlite-journal
+/.vs/slnx.sqlite
+/.vs/SimpleRestaurantSimulation/v16/.suo
+/.vs/SimpleRestaurantSimulation/v16
+/.vs/khushbakhtmahkamov/v16/.suo
