@@ -10,7 +10,7 @@ namespace SimpleRestaurantSimulation
     {
         private int quantity;
         public static int NumEggOrder = 0;
-        private int? quality;
+        private int? quality=-1;
 
         public EggOrder(int quantity)
         {
@@ -19,25 +19,36 @@ namespace SimpleRestaurantSimulation
         }
 
         public int GetQuantity()=> this.quantity;
+        
+        public EggOrder Clone()
+        {
+            EggOrder clone = new EggOrder(this.quantity);
+            clone.quality = this.quality;
+            return clone;
+        }
 
         public int? GetQuality()
         {
             //TODO: Everytime when you call this method it should return the same value per the instance of the EggOrder
-            if (NumEggOrder % 2 == 0)
+            if (this.quality == -1)
             {
-                quality= null;
+                if (NumEggOrder % 2 == 0)
+                {
+                    this.quality = null;
+                }
+                else
+                {
+                    Random rand = new Random();
+                    this.quality = rand.Next(101);
+                }
             }
-            else
-            {
-                Random rand = new Random();
-                quality= rand.Next(101);
-            }
-            return quality;
+            
+            return this.quality;
         }
 
         public void Crack()
         {
-            if (quality < 25)
+            if (this.quality < 25)
             {
                 throw new ArgumentOutOfRangeException("Bad quality");
             }

@@ -8,20 +8,23 @@ namespace SimpleRestaurantSimulation
 {
     class Employee
     {
-        public static int NumEmployee = 0;
+        public static int NumRequest = 0;
         private Object objectOrder;
         private int prepared = 0;
 
 
         public Employee()
         {
-            NumEmployee++;
+            
         }
 
         public object NewRequest(int quantity, string menuItem)
         {
             //TODO: NumEmployee is not correct. You should check number of requests.
-            if (NumEmployee % 3 == 0)
+
+            NumRequest++;
+
+            if (NumRequest % 3 == 0)
             {
                 if (menuItem == "egg")
                 {
@@ -56,14 +59,18 @@ namespace SimpleRestaurantSimulation
 
             //TODO: Please complete this copying method...
             Object o;
-            o = objectOrder;
             if (objectOrder is EggOrder)
             {
-                //EggOrder уggOrder = new EggOrder();
+                
+                EggOrder eggOrder = (EggOrder)objectOrder;
+                EggOrder clone = eggOrder.Clone();
+                o = clone;
             }
             else
             {
-
+                ChickenOrder chickenOrder = (ChickenOrder)objectOrder;
+                ChickenOrder clone = new ChickenOrder(chickenOrder.GetQuantity());
+                o = clone;
             }
             return o;
         }
@@ -86,7 +93,7 @@ namespace SimpleRestaurantSimulation
         {
             if (prepared == 1)
             {
-                throw new Exception();
+                throw new InvalidOperationException("Еhe food is already ready you cannot cook the same food twice");
             }
 
             prepared = 1;

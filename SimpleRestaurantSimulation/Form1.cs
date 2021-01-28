@@ -12,7 +12,7 @@ namespace SimpleRestaurantSimulation
 {
     public partial class Form1 : Form
     {
-        Employee employee;
+        Employee employee = new Employee();
         Object o;
         public Form1()
         {
@@ -24,7 +24,7 @@ namespace SimpleRestaurantSimulation
             try
             {
                 //TODO: You should not create new Employee everytime when you click submit button. It should be only one enployee.
-                employee = new Employee();
+                
                 string itemMenu = "chicken";
                 if (egg.Checked)
                 {
@@ -60,6 +60,10 @@ namespace SimpleRestaurantSimulation
             try
             {
                 textResult.Text = employee.PrepareFood(o);
+            }
+            catch(InvalidOperationException ex)
+            {
+                textResult.Text = ex.Message;
             }
             catch (Exception ex)
             {
