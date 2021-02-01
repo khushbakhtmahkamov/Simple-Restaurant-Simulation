@@ -58,13 +58,8 @@ namespace SimpleRestaurantSimulation
             {
                 textResult.Text = employee.PrepareFood(o);
             }//TODO: Барои чи 2то catch блок? 
-            catch(InvalidOperationException ex)
-            {
-                textResult.Text = ex.Message;
-            }
             catch (Exception ex)
             {
-
                 textResult.Text = ex.Message;
             }
             

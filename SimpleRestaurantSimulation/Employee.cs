@@ -53,7 +53,7 @@ namespace SimpleRestaurantSimulation
             if (objectOrder == null)
             {
                 //TODO: Барои ин exception сабабашро хамчун message нависед. Зеро ки агар ягон заказ нагирифта копия кунем чунин messageи нофахмо мебарорад: "Exception of type 'System.Exception' was thrown.".
-                throw new Exception();
+                throw new Exception("order still not created");
             }
             
             Object o;

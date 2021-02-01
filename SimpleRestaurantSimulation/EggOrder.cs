@@ -16,6 +16,15 @@ namespace SimpleRestaurantSimulation
         {
             this.quantity = quantity;
             NumEggOrder++;
+            if (NumEggOrder % 2 == 0)
+            {
+                this.quality = null;
+            }
+            else
+            {
+                Random rand = new Random();
+                this.quality = rand.Next(101);
+            }
         }
 
         public int GetQuantity()=> this.quantity;
@@ -27,24 +36,8 @@ namespace SimpleRestaurantSimulation
             return clone;
         }
 
-        public int? GetQuality()
-        {
-            //TODO: Ин метод public аст ва аз берун хар вактеки чег мезанед, хархел кимматро бармагардонад. Аммо бояд барои як инстанси EggOrder доим якхел кимматро баргардонад, наинки хархел. Барои хамин бехтар мешуд хамин коди генерацияи сифатро ба конструктор нависед.
-            if (this.quality == -1)
-            {
-                if (NumEggOrder % 2 == 0)
-                {
-                    this.quality = null;
-                }
-                else
-                {
-                    Random rand = new Random();
-                    this.quality = rand.Next(101);
-                }
-            }
-            
-            return this.quality;
-        }
+        public int? GetQuality()=> this.quality;
+     
 
         public void Crack()
         {
