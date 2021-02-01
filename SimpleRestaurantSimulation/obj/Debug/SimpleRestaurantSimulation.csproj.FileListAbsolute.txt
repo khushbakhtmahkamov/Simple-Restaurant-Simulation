@@ -7,3 +7,12 @@ c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimula
 c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.Cache
 c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
 c:\users\mahkamov-h\documents\visual studio 2017\Projects\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe.config
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.pdb
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojResolveAssemblyReference.cache
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Form1.resources
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Properties.Resources.resources
+C:\GitHub projects\Restaurant\Khushbakht Mahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.Cache

@@ -22,9 +22,7 @@ namespace SimpleRestaurantSimulation
         private void submitNewRequest_Click(object sender, EventArgs e)
         {
             try
-            {
-                //TODO: You should not create new Employee everytime when you click submit button. It should be only one enployee.
-                
+            {                
                 string itemMenu = "chicken";
                 if (egg.Checked)
                 {
@@ -49,18 +47,17 @@ namespace SimpleRestaurantSimulation
             }
             catch (Exception ex)
             {
-
                 textResult.Text = ex.Message;
             }
             
         }
-        //TODO: I clicked this button twice and I'm getting this message in resultbox: "Exception of type 'System.Exception' was thrown.". This message is not clear. Please correct this.
+        
         private void prepareFood_Click(object sender, EventArgs e)
         {
             try
             {
                 textResult.Text = employee.PrepareFood(o);
-            }
+            }//TODO: Барои чи 2то catch блок? 
             catch(InvalidOperationException ex)
             {
                 textResult.Text = ex.Message;

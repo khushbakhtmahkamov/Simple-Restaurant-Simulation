@@ -29,7 +29,7 @@ namespace SimpleRestaurantSimulation
 
         public int? GetQuality()
         {
-            //TODO: Everytime when you call this method it should return the same value per the instance of the EggOrder
+            //TODO: Ин метод public аст ва аз берун хар вактеки чег мезанед, хархел кимматро бармагардонад. Аммо бояд барои як инстанси EggOrder доим якхел кимматро баргардонад, наинки хархел. Барои хамин бехтар мешуд хамин коди генерацияи сифатро ба конструктор нависед.
             if (this.quality == -1)
             {
                 if (NumEggOrder % 2 == 0)

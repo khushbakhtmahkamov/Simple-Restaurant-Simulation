@@ -19,9 +19,7 @@ namespace SimpleRestaurantSimulation
         }
 
         public object NewRequest(int quantity, string menuItem)
-        {
-            //TODO: NumEmployee is not correct. You should check number of requests.
-
+        {            
             NumRequest++;
 
             if (NumRequest % 3 == 0)
@@ -54,10 +52,10 @@ namespace SimpleRestaurantSimulation
             prepared = 0;
             if (objectOrder == null)
             {
+                //TODO: Барои ин exception сабабашро хамчун message нависед. Зеро ки агар ягон заказ нагирифта копия кунем чунин messageи нофахмо мебарорад: "Exception of type 'System.Exception' was thrown.".
                 throw new Exception();
             }
-
-            //TODO: Please complete this copying method...
+            
             Object o;
             if (objectOrder is EggOrder)
             {
