@@ -57,7 +57,7 @@ namespace SimpleRestaurantSimulation
             try
             {
                 textResult.Text = employee.PrepareFood(o);
-            }//TODO: Барои чи 2то catch блок? 
+            }
             catch (Exception ex)
             {
                 textResult.Text = ex.Message;

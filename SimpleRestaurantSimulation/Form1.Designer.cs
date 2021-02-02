@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chicken = new System.Windows.Forms.RadioButton();
             this.egg = new System.Windows.Forms.RadioButton();
+            this.chicken = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textQuantity = new System.Windows.Forms.TextBox();
             this.submitNewRequest = new System.Windows.Forms.Button();
@@ -55,18 +55,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
-            // chicken
-            // 
-            this.chicken.AutoSize = true;
-            this.chicken.Location = new System.Drawing.Point(33, 29);
-            this.chicken.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chicken.Name = "chicken";
-            this.chicken.Size = new System.Drawing.Size(84, 24);
-            this.chicken.TabIndex = 1;
-            this.chicken.TabStop = true;
-            this.chicken.Text = "Chicken";
-            this.chicken.UseVisualStyleBackColor = true;
-            // 
             // egg
             // 
             this.egg.AutoSize = true;
@@ -78,6 +66,18 @@
             this.egg.TabStop = true;
             this.egg.Text = "Egg";
             this.egg.UseVisualStyleBackColor = true;
+            // 
+            // chicken
+            // 
+            this.chicken.AutoSize = true;
+            this.chicken.Location = new System.Drawing.Point(33, 29);
+            this.chicken.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chicken.Name = "chicken";
+            this.chicken.Size = new System.Drawing.Size(84, 24);
+            this.chicken.TabIndex = 1;
+            this.chicken.TabStop = true;
+            this.chicken.Text = "Chicken";
+            this.chicken.UseVisualStyleBackColor = true;
             // 
             // label1
             // 

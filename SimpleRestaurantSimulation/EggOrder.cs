@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class EggOrder
+    class EggOrder:Order
     {
-        private int quantity;
+       // private int quantity;
         public static int NumEggOrder = 0;
         private int? quality=-1;
 
-        public EggOrder(int quantity)
+        public EggOrder(int quantity):base(quantity)
         {
-            this.quantity = quantity;
+            //this.quantity = quantity;
             NumEggOrder++;
             if (NumEggOrder % 2 == 0)
             {
@@ -27,7 +27,7 @@ namespace SimpleRestaurantSimulation
             }
         }
 
-        public int GetQuantity()=> this.quantity;
+        //public int GetQuantity()=> this.quantity;
         
         public EggOrder Clone()
         {
