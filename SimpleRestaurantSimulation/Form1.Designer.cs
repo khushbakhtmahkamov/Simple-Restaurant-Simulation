@@ -82,6 +82,7 @@
             // 
             // textResult
             // 
+            this.textResult.AcceptsReturn = true;
             this.textResult.Location = new System.Drawing.Point(36, 343);
             this.textResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textResult.Multiline = true;

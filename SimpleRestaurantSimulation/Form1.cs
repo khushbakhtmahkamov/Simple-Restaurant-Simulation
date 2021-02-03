@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace SimpleRestaurantSimulation
 {
-    enum typeDrinkList { NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
+    //enum typeDrinkList { NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
+    enum menu { Chicken, Egg, NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
     public partial class Form1 : Form
     {
-        enum menu {Chicken, Egg, TypesDrink};
+        
         Server server = new Server();
 
         Employee employee = new Employee();
@@ -21,6 +22,7 @@ namespace SimpleRestaurantSimulation
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void submitNewRequest_Click(object sender, EventArgs e)
@@ -71,24 +73,60 @@ namespace SimpleRestaurantSimulation
 
         private void receiveRequestCustomer_Click(object sender, EventArgs e)
         {
-            //server.Receive(int.Parse(quantityChicken.Text),int.Parse(quantityEgg.Text),typeDrink.se;
-
-           // MessageBox.Show(typeDrink.SelectedValue.ToString());
+            try
+            {
+                menu drink = (menu)Enum.Parse(typeof(menu), typeDrink.SelectedItem.ToString());
+                server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink);
+            }
+            catch (Exception ex)
+            {
+                textResult.Text = ex.Message;
+            }
+            
         }
 
         private void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                server.Send();
+            }
+            catch (Exception ex)
+            {
+                textResult.Text = ex.ToString();
+            }
+            
         }
 
         private void serveFoodCustomers_Click(object sender, EventArgs e)
         {
+            try
+            {
+                textResult.Text = "";
+                string[] result = server.Serve();
+                for (int i = 0; i < result.Length; i++)
+                {
+                    textResult.AppendText(result[i]);
+                    textResult.AppendText(Environment.NewLine);
+                }
 
+                textResult.AppendText("Please enjoy your food!");
+            }
+            catch (Exception ex)
+            {
+                textResult.Text = ex.Message;
+            }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            typeDrink.DataSource = Enum.GetValues(typeof(typeDrinkList));
+            for (int i = 2; i < Enum.GetValues(typeof(menu)).Length; i++)
+            {
+                typeDrink.Items.Add(((menu)i).ToString());
+            }
+            typeDrink.SelectedIndex = 0;
+            
         }
     }
 }

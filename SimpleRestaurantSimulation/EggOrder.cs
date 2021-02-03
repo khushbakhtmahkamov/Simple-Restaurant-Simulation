@@ -14,17 +14,10 @@ namespace SimpleRestaurantSimulation
 
         public EggOrder(int quantity):base(quantity)
         {
-            //this.quantity = quantity;
-            NumEggOrder++;
-            if (NumEggOrder % 2 == 0)
-            {
-                this.quality = null;
-            }
-            else
-            {
-                Random rand = new Random();
-                this.quality = rand.Next(101);
-            }
+            
+            Random rand = new Random();
+            this.quality = rand.Next(101);
+            
         }
 
         //public int GetQuantity()=> this.quantity;
@@ -51,10 +44,6 @@ namespace SimpleRestaurantSimulation
         {
 
         }
-
-        public void Cook()
-        {
-
-        }
+       
     }
 }
