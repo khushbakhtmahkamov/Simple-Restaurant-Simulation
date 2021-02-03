@@ -21,7 +21,7 @@ namespace SimpleRestaurantSimulation
 
         }
 
-        public void Cook()
+        public void  Cook()
         {
 
         }

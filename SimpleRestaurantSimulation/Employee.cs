@@ -8,7 +8,6 @@ namespace SimpleRestaurantSimulation
 {
     class Employee
     {
-        public static int NumRequest = 0;
         private Object objectOrder;
         private int prepared = 0;
 
@@ -19,20 +18,7 @@ namespace SimpleRestaurantSimulation
         }
 
         public object NewRequest(int quantity, string menuItem)
-        {            
-            NumRequest++;
-
-            if (NumRequest % 3 == 0)
-            {
-                if (menuItem == "egg")
-                {
-                    menuItem = "chicken";
-                }
-                else
-                {
-                    menuItem = "egg";
-                }
-            }
+        { 
 
             if (menuItem == "egg")
             {
@@ -52,7 +38,6 @@ namespace SimpleRestaurantSimulation
             prepared = 0;
             if (objectOrder == null)
             {
-                //TODO: Барои ин exception сабабашро хамчун message нависед. Зеро ки агар ягон заказ нагирифта копия кунем чунин messageи нофахмо мебарорад: "Exception of type 'System.Exception' was thrown.".
                 throw new Exception("order still not created");
             }
             
