@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class ChickenOrder:Order
+    class ChickenOrder : Order
     {
         //private int quantity;
-        public ChickenOrder(int quantity):base(quantity)
+        public ChickenOrder(int quantity) : base(quantity)
         {
             //this.quantity = quantity;
         }
 
-       // public int GetQuantity()=> this.quantity;
+        // public int GetQuantity()=> this.quantity;
 
         public void CutUp()
         {
 
         }
-       
+
     }
 }

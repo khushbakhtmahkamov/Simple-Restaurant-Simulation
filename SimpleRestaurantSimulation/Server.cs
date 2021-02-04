@@ -19,7 +19,7 @@ namespace SimpleRestaurantSimulation
 
         }
 
-        public void Receive(int numberChicken,int numberEgg,menu typeDrink)
+        public void Receive(int numberChicken, int numberEgg, menu typeDrink)
         {
             if (numberObject == 0)
             {
@@ -27,7 +27,7 @@ namespace SimpleRestaurantSimulation
                 numberObject = 1;
                 countArray = 0;
             }
-            if(countArray>7)
+            if (countArray > 7)
             {
                 throw new ArgumentOutOfRangeException("Maximum number of orders 8");
             }
@@ -39,7 +39,7 @@ namespace SimpleRestaurantSimulation
             }
             count = count + numberChicken + numberEgg;
             orderMenu[countArray] = new menu[count];
-            for(int i = 0; i < numberChicken; i++)
+            for (int i = 0; i < numberChicken; i++)
             {
                 orderMenu[countArray][countОaggedФrray] = menu.Chicken;
                 countОaggedФrray++;
@@ -60,19 +60,20 @@ namespace SimpleRestaurantSimulation
         public void Send()
         {
             result = new string[countArray];
-            
+
             for (int i = 0; i < countArray; i++)
             {
-                menu drink =menu.NoDrink;
+                menu drink = menu.NoDrink;
                 int count = orderMenu[i].Length;
                 int countChicken = 0;
                 int countEgg = 0;
-                for(int j = 0; j < count; j++)
+                for (int j = 0; j < count; j++)
                 {
                     if (orderMenu[i][j] == menu.Chicken)
                     {
                         countChicken++;
-                    }else if(orderMenu[i][j] == menu.Egg)
+                    }
+                    else if (orderMenu[i][j] == menu.Egg)
                     {
                         countEgg++;
                     }
@@ -80,21 +81,22 @@ namespace SimpleRestaurantSimulation
                     {
                         drink = orderMenu[i][j];
                     }
-                    
+
                 }
+                //TODO: You should all count of chicken(egg) from all the requests at once
                 if (countChicken > 0)
                 {
-                   o = cook.Submit(menu.Chicken, countChicken);
+                    o = cook.Submit(menu.Chicken, countChicken);
                     cook.Prepare(o);
                 }
                 if (countEgg > 0)
                 {
-                   o = cook.Submit(menu.Egg, countEgg);
-                   cook.Prepare(o);
+                    o = cook.Submit(menu.Egg, countEgg);
+                    cook.Prepare(o);
                 }
-                result[i] = "Customer "+i+ " is served "+ countChicken+ " chicken, "+ countEgg+ " egg, "+drink;
+                result[i] = "Customer " + i + " is served " + countChicken + " chicken, " + countEgg + " egg, " + drink;
             }
-            
+
         }
 
         public string[] Serve()

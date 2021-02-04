@@ -16,7 +16,7 @@ namespace SimpleRestaurantSimulation
     {
         
         Server server = new Server();
-
+        //TODO: Please remove unnecessary code
         Employee employee = new Employee();
         Object o;
         public Form1()
@@ -85,6 +85,7 @@ namespace SimpleRestaurantSimulation
             
         }
 
+        //TODO: Print egg's quality on UI when clicking this "Send..." button
         private void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try

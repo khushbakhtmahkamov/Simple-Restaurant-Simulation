@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class EggOrder:Order
+    class EggOrder : Order
     {
-       // private int quantity;
-        public static int NumEggOrder = 0;
-        private int? quality=-1;
+        // private int quantity;
+        public static int NumEggOrder = 0;//TODO: remove
+        private int? quality = -1;
 
-        public EggOrder(int quantity):base(quantity)
+        public EggOrder(int quantity) : base(quantity)
         {
-            
+
             Random rand = new Random();
             this.quality = rand.Next(101);
-            
+
         }
 
         //public int GetQuantity()=> this.quantity;
-        
+        //TODO: We don't need this method anymore. You can remove this.
         public EggOrder Clone()
         {
             EggOrder clone = new EggOrder(this.quantity);
@@ -29,8 +29,8 @@ namespace SimpleRestaurantSimulation
             return clone;
         }
 
-        public int? GetQuality()=> this.quality;
-     
+        public int? GetQuality() => this.quality;
+
 
         public void Crack()
         {
@@ -44,6 +44,6 @@ namespace SimpleRestaurantSimulation
         {
 
         }
-       
+
     }
 }

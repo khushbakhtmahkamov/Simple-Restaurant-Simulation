@@ -8,6 +8,7 @@ namespace SimpleRestaurantSimulation
 {
     class Cook
     {
+        //TODO: Type of the objectOrder should be Order
         private Object objectOrder;
         private int prepared = 0;
         public Cook()
@@ -22,7 +23,8 @@ namespace SimpleRestaurantSimulation
                 ChickenOrder chickenOrder = new ChickenOrder(quantity);
                 this.objectOrder = chickenOrder;
             }
-            else if(menu == menu.Egg){
+            else if (menu == menu.Egg)
+            {
                 EggOrder eggOrder = new EggOrder(quantity);
                 this.objectOrder = eggOrder;
             }
@@ -30,6 +32,7 @@ namespace SimpleRestaurantSimulation
             return this.objectOrder;
         }
 
+        //TODO: You don't need to get order object through parameter. Use objectOrder variable.
         public string Prepare(object ob)
         {
             if (ob is ChickenOrder)

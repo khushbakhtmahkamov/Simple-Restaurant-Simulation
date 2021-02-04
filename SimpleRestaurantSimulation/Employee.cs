@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
+    //TODO: We don't need this Employee anymore. You can remove this file.
     class Employee
     {
         private Object objectOrder;
@@ -33,6 +34,7 @@ namespace SimpleRestaurantSimulation
             return this.objectOrder;
         }
 
+        
         public object CopyRequest()
         {
             prepared = 0;
