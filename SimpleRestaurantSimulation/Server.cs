@@ -82,10 +82,8 @@ namespace SimpleRestaurantSimulation
                     }
 
                 }
-                //TODO: You should all count of chicken(egg) from all the requests at once
                 
-                result[i] = "Customer " + i + " is served " + countChicken + " chicken, " + countEgg + " egg, " + drink;
-                
+                result[i] = "Customer " + i + " is served " + countChicken + " chicken, " + countEgg + " egg, " + drink;                
             }
 
             if (countChicken > 0)

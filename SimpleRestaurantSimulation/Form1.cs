@@ -35,13 +35,11 @@ namespace SimpleRestaurantSimulation
             }
             
         }
-
-        //TODO: Print egg's quality on UI when clicking this "Send..." button
+        
         private void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try
-            {
-                
+            {                
                 TextQualityResult.Text= server.Send();
             }
             catch (Exception ex)
