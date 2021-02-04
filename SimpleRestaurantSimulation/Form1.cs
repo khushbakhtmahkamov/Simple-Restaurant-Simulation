@@ -46,7 +46,7 @@ namespace SimpleRestaurantSimulation
             }
             catch (Exception ex)
             {
-                textResult.Text = ex.ToString();
+                textResult.Text = ex.Message;
             }
             
         }

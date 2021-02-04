@@ -58,11 +58,14 @@ namespace SimpleRestaurantSimulation
 
         public string Send()
         {
+            string qualityResult = "";
             result = new string[countArray];
             int countChicken = 0;
             int countEgg = 0;
             for (int i = 0; i < countArray; i++)
             {
+                countChicken = 0;
+                countEgg = 0;
                 menu drink = menu.NoDrink;
                 int count = orderMenu[i].Length;
                 
@@ -97,12 +100,17 @@ namespace SimpleRestaurantSimulation
             {
                 cook.Submit(menu.Egg, countEgg);
                 cook.Prepare();
+                qualityResult = cook.Inspect();
             }
-            return cook.Inspect();
+            return qualityResult;
         }
 
         public string[] Serve()
         {
+            if (result == null || result.Length==0 )
+            {
+                throw new NullReferenceException("order not sent to the Cook");
+            }
             numberObject = 0;
             return result;
         }
