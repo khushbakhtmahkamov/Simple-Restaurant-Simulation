@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleRestaurantSimulation
 {
     class Cook
-    {
-        //TODO: Type of the objectOrder should be Order
+    {        
         private Order objectOrder;
         public Cook()
         {
@@ -43,8 +42,7 @@ namespace SimpleRestaurantSimulation
                 return "Egg Quality:" + eggOrder.GetQuality();
             }
         }
-
-        //TODO: You don't need to get order object through parameter. Use objectOrder variable.
+        
         public string Prepare()
         {
             
