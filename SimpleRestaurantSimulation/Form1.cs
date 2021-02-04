@@ -10,64 +10,15 @@ using System.Windows.Forms;
 
 namespace SimpleRestaurantSimulation
 {
-    //enum typeDrinkList { NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
     enum menu { Chicken, Egg, NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
     public partial class Form1 : Form
     {
         
         Server server = new Server();
-        //TODO: Please remove unnecessary code
-        Employee employee = new Employee();
         Object o;
         public Form1()
         {
             InitializeComponent();
-            
-        }
-
-        private void submitNewRequest_Click(object sender, EventArgs e)
-        {
-            try
-            {                
-                string itemMenu = "chicken";
-                //if (egg.Checked)
-                {
-                    itemMenu = "egg";
-                }
-               // o = employee.NewRequest(int.Parse(textQuantity.Text.ToString()), itemMenu);
-                TextQualityResult.Text = employee.Inspect(o);
-            }
-            catch (Exception ex)
-            {
-                textResult.Text = ex.Message;
-            }
-            
-        }
-
-        private void copyThePreviousRequest_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                o = employee.CopyRequest();
-                TextQualityResult.Text = employee.Inspect(o);
-            }
-            catch (Exception ex)
-            {
-                textResult.Text = ex.Message;
-            }
-            
-        }
-        
-        private void prepareFood_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                textResult.Text = employee.PrepareFood(o);
-            }
-            catch (Exception ex)
-            {
-                textResult.Text = ex.Message;
-            }
             
         }
 
@@ -90,7 +41,8 @@ namespace SimpleRestaurantSimulation
         {
             try
             {
-                server.Send();
+                
+                TextQualityResult.Text= server.Send();
             }
             catch (Exception ex)
             {

@@ -9,8 +9,7 @@ namespace SimpleRestaurantSimulation
     class Cook
     {
         //TODO: Type of the objectOrder should be Order
-        private Object objectOrder;
-        private int prepared = 0;
+        private Order objectOrder;
         public Cook()
         {
 
@@ -32,12 +31,26 @@ namespace SimpleRestaurantSimulation
             return this.objectOrder;
         }
 
-        //TODO: You don't need to get order object through parameter. Use objectOrder variable.
-        public string Prepare(object ob)
+        public string Inspect()
         {
-            if (ob is ChickenOrder)
+            if (this.objectOrder is ChickenOrder)
             {
-                ChickenOrder chickOrder = (ChickenOrder)ob;
+                return "no inspection is required";
+            }
+            else
+            {
+                EggOrder eggOrder = (EggOrder)this.objectOrder;
+                return "Egg Quality:" + eggOrder.GetQuality();
+            }
+        }
+
+        //TODO: You don't need to get order object through parameter. Use objectOrder variable.
+        public string Prepare()
+        {
+            
+            if (this.objectOrder is ChickenOrder)
+            {
+                ChickenOrder chickOrder = (ChickenOrder)this.objectOrder;
 
                 for (int i = 1; i <= chickOrder.GetQuantity(); i++)
                 {
@@ -49,7 +62,7 @@ namespace SimpleRestaurantSimulation
             else
             {
                 int countRottenEggs = 0;
-                EggOrder eggOrder = (EggOrder)ob;
+                EggOrder eggOrder = (EggOrder)this.objectOrder;
                 for (int i = 1; i <= eggOrder.GetQuantity(); i++)
                 {
                     try

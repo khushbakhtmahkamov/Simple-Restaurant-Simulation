@@ -9,7 +9,6 @@ namespace SimpleRestaurantSimulation
     class Server
     {
         Cook cook = new Cook();
-        Object o;
         int numberObject = 0;
         menu[][] orderMenu;
         int countArray = 0;
@@ -57,16 +56,16 @@ namespace SimpleRestaurantSimulation
             countArray++;
         }
 
-        public void Send()
+        public string Send()
         {
             result = new string[countArray];
-
+            int countChicken = 0;
+            int countEgg = 0;
             for (int i = 0; i < countArray; i++)
             {
                 menu drink = menu.NoDrink;
                 int count = orderMenu[i].Length;
-                int countChicken = 0;
-                int countEgg = 0;
+                
                 for (int j = 0; j < count; j++)
                 {
                     if (orderMenu[i][j] == menu.Chicken)
@@ -84,19 +83,22 @@ namespace SimpleRestaurantSimulation
 
                 }
                 //TODO: You should all count of chicken(egg) from all the requests at once
-                if (countChicken > 0)
-                {
-                    o = cook.Submit(menu.Chicken, countChicken);
-                    cook.Prepare(o);
-                }
-                if (countEgg > 0)
-                {
-                    o = cook.Submit(menu.Egg, countEgg);
-                    cook.Prepare(o);
-                }
+                
                 result[i] = "Customer " + i + " is served " + countChicken + " chicken, " + countEgg + " egg, " + drink;
+                
             }
 
+            if (countChicken > 0)
+            {
+                cook.Submit(menu.Chicken, countChicken);
+                cook.Prepare();
+            }
+            if (countEgg > 0)
+            {
+                cook.Submit(menu.Egg, countEgg);
+                cook.Prepare();
+            }
+            return cook.Inspect();
         }
 
         public string[] Serve()

@@ -15,9 +15,8 @@ namespace SimpleRestaurantSimulation
         }
 
         public int GetQuantity() => this.quantity;
-
-        //TODO: This method should overriden in derived classes
-        public void Cook()
+        
+        public virtual void Cook()
         {
 
         }
