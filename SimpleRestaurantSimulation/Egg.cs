@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class Egg : CookedFood,IDisposable
+    class Egg : CookedFood, IDisposable
     {
         private int? quality = -1;
         private bool disposed = false;
@@ -14,6 +14,7 @@ namespace SimpleRestaurantSimulation
         {
         }
 
+        //TODO: It's not used
         public int? GetQuality() => this.quality;
 
         public void Crack()

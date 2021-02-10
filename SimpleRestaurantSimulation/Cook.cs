@@ -7,19 +7,17 @@ using System.Threading.Tasks;
 namespace SimpleRestaurantSimulation
 {
     class Cook
-    {        
-        //private MenuItem objectOrder;
+    {
         public Cook()
         {
-
         }
 
         public void Process(TableRequests tr)
         {
-            Chicken ch=new Chicken(1);
+            Chicken ch = new Chicken(1);
             ItemInterface[] menuItems;
             menuItems = tr[ch];
-            foreach(ItemInterface menuItem in menuItems)
+            foreach (ItemInterface menuItem in menuItems)
             {
                 Chicken chickOrder = (Chicken)menuItem;
                 for (int i = 1; i <= chickOrder.GetQuantity(); i++)
@@ -52,23 +50,8 @@ namespace SimpleRestaurantSimulation
                     }
                     eggOrder.Cook();
                 }
-                   
+
             }
         }
-
-       /* public string Inspect()
-        {
-            if (this.objectOrder is Chicken)
-            {
-                return "no inspection is required";
-            }
-            else
-            {
-                Egg egg = (Egg)this.objectOrder;
-                return "Egg Quality:" + egg.GetQuality();
-            }
-        }
-        */
-
     }
 }

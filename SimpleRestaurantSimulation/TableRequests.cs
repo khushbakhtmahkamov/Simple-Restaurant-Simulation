@@ -30,7 +30,7 @@ namespace SimpleRestaurantSimulation
         public ItemInterface[] this[int customer]
         {
             get
-            {
+            {                
                 ItemInterface[] result = new ItemInterface[3];
                 result[0] = menuItem[customer, 0];
                 result[1] = menuItem[customer, 1];
@@ -43,7 +43,7 @@ namespace SimpleRestaurantSimulation
         {
             get
             {
-
+                //TODO: Code bisyor shudaast. Agar shavad code refactor karda codea kam kuned. Codeho dublicate shudaast
                 int count = 0;
                 for (int i = 0; i < 8; i++)
                 {
@@ -95,7 +95,5 @@ namespace SimpleRestaurantSimulation
                 return result;
             }
         }
-
-
     }
 }

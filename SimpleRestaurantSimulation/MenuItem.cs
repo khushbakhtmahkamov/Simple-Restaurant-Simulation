@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    abstract class MenuItem:ItemInterface
+    abstract class MenuItem : ItemInterface
     {
         public int quantity;
         public MenuItem(int quantity)
@@ -14,8 +14,10 @@ namespace SimpleRestaurantSimulation
             this.quantity = quantity;
         }
 
+        //TODO: remove this method
         public int GetQuantity() => this.quantity;
 
+        //TODO: Obtained() and Served() methods should be abstract
         public void Obtained()
         {
 

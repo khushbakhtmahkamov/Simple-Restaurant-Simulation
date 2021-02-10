@@ -10,7 +10,7 @@ namespace SimpleRestaurantSimulation
     {
         Cook cook = new Cook();
         int numberObject = 0;
-        menu[][] orderMenu;
+        menu[][] orderMenu; //TODO: in massiv lozim nest 
         
         TableRequests tr;
         int countArray = 0;
@@ -38,7 +38,7 @@ namespace SimpleRestaurantSimulation
 
             if (numberChicken > 0)
             {
-                ItemInterface i;
+                ItemInterface i; //TODO: Be istifodai hamin variable shuda metavonad. Inchunin codei hamin methodro kam kuned.
                 Chicken chicken = new Chicken(numberChicken);
                 i = chicken;
                 tr.Add(customer, i);
@@ -78,7 +78,7 @@ namespace SimpleRestaurantSimulation
 
         public string Send()
         {
-            string qualityResult = "";
+            string qualityResult = ""; //TODO: ?
             cook.Process(tr);
 
             
