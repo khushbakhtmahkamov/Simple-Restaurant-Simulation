@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace SimpleRestaurantSimulation
 {
-    enum menu { Chicken, Egg, NoDrink, Tea, Coffee, Juice, Water, Cola, Pepsi };
+    enum menu { Chicken, Egg, NoDrink, Tea, Cola, Pepsi };
     public partial class Form1 : Form
     {
-        
+
         Server server = new Server();
         Object o;
         public Form1()

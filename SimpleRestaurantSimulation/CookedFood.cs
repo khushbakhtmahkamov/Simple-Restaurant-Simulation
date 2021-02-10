@@ -6,20 +6,15 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class Order
+    class CookedFood : MenuItem
     {
-        public int quantity;
-        public Order(int quantity)
+        public CookedFood(int quantity) : base(quantity)
         {
-            this.quantity = quantity;
         }
 
-        public int GetQuantity() => this.quantity;
-        
         public virtual void Cook()
         {
 
         }
-
     }
 }

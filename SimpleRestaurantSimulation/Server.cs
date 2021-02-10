@@ -11,7 +11,10 @@ namespace SimpleRestaurantSimulation
         Cook cook = new Cook();
         int numberObject = 0;
         menu[][] orderMenu;
+        
+        TableRequests tr;
         int countArray = 0;
+        int customer = 0;
         string[] result;
         public Server()
         {
@@ -22,89 +25,108 @@ namespace SimpleRestaurantSimulation
         {
             if (numberObject == 0)
             {
+                tr = new TableRequests();
                 orderMenu = new menu[8][];
                 numberObject = 1;
                 countArray = 0;
+                customer = 0;
             }
-            if (countArray > 7)
+            if (customer > 7)
             {
                 throw new ArgumentOutOfRangeException("Maximum number of orders 8");
             }
-            int count = 0;
-            int countОaggedФrray = 0;
-            if (typeDrink != menu.NoDrink)
+
+            if (numberChicken > 0)
             {
-                count = 1;
-            }
-            count = count + numberChicken + numberEgg;
-            orderMenu[countArray] = new menu[count];
-            for (int i = 0; i < numberChicken; i++)
-            {
-                orderMenu[countArray][countОaggedФrray] = menu.Chicken;
-                countОaggedФrray++;
-            }
-            for (int i = 0; i < numberEgg; i++)
-            {
-                orderMenu[countArray][countОaggedФrray] = menu.Egg;
-                countОaggedФrray++;
-            }
-            if (typeDrink != menu.NoDrink)
-            {
-                orderMenu[countArray][countОaggedФrray] = typeDrink;
+                ItemInterface i;
+                Chicken chicken = new Chicken(numberChicken);
+                i = chicken;
+                tr.Add(customer, i);
             }
 
-            countArray++;
+            if (numberEgg > 0)
+            {
+                ItemInterface i;
+                Egg egg = new Egg(numberEgg);
+                i = egg;
+                tr.Add(customer, i);
+            }
+
+            if (typeDrink != menu.NoDrink)
+            {
+                ItemInterface i;
+                if (typeDrink == menu.Pepsi)
+                {
+                    Pepsi pepsi = new Pepsi(1);
+                    i = pepsi;
+                }
+                else if(typeDrink == menu.Cola)
+                {
+                    CocaCola cola = new CocaCola(1);
+                    i = cola;
+                }
+                else
+                {
+                    Tea tea = new Tea(1);
+                    i = tea;
+                }
+                tr.Add(customer, i);
+            }
+            customer++;
+            
         }
 
         public string Send()
         {
             string qualityResult = "";
-            result = new string[countArray];
-            int countChicken = 0;
-            int countEgg = 0;
-            for (int i = 0; i < countArray; i++)
-            {
-                countChicken = 0;
-                countEgg = 0;
-                menu drink = menu.NoDrink;
-                int count = orderMenu[i].Length;
-                
-                for (int j = 0; j < count; j++)
-                {
-                    if (orderMenu[i][j] == menu.Chicken)
-                    {
-                        countChicken++;
-                    }
-                    else if (orderMenu[i][j] == menu.Egg)
-                    {
-                        countEgg++;
-                    }
-                    else
-                    {
-                        drink = orderMenu[i][j];
-                    }
+            cook.Process(tr);
 
-                }
-                
-                result[i] = "Customer " + i + " is served " + countChicken + " chicken, " + countEgg + " egg, " + drink;                
-            }
-
-            if (countChicken > 0)
-            {
-                cook.Submit(menu.Chicken, countChicken);
-                cook.Prepare();
-            }
-            if (countEgg > 0)
-            {
-                cook.Submit(menu.Egg, countEgg);
-                cook.Prepare();
-                qualityResult = cook.Inspect();
-            }
+            
             return qualityResult;
         }
 
         public string[] Serve()
         {
+            result = new string[customer];
+            ItemInterface[] menuItem;
+            for(int i = 0; i < customer; i++)
+            {
+                menuItem = tr[i];
+                int numberChiken = 0;
+                int numberEgg = 0;
+                menu drink = menu.NoDrink;
+                if (menuItem[0] != null)
+                {
+                    Chicken chicken = (Chicken)menuItem[0];
+                    numberChiken=chicken.GetQuantity();
+                }
+
+                if (menuItem[1] != null)
+                {
+                    Egg egg = (Egg)menuItem[1];
+                    numberEgg = egg.GetQuantity();
+                }
+
+                if (menuItem[2] != null)
+                {
+                    if(menuItem[2] is CocaCola)
+                    {
+                        drink = menu.Cola;
+                    }
+
+                    if (menuItem[2] is Pepsi)
+                    {
+                        drink = menu.Pepsi;
+                    }
+
+                    if (menuItem[2] is Tea)
+                    {
+                        drink = menu.Tea;
+                    }
+                }
+                result[i] = "Customer " + i + " is served " + numberChiken + " chicken, " + numberEgg + " egg, " + drink;
+            }
+
             if (result == null || result.Length==0 )
             {
                 throw new NullReferenceException("order not sent to the Cook");

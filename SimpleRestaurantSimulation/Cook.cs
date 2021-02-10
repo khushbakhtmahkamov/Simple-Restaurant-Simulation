@@ -8,77 +8,67 @@ namespace SimpleRestaurantSimulation
 {
     class Cook
     {        
-        private Order objectOrder;
+        //private MenuItem objectOrder;
         public Cook()
         {
 
         }
 
-        public object Submit(menu menu, int quantity)
+        public void Process(TableRequests tr)
         {
-            if (menu == menu.Chicken)
+            Chicken ch=new Chicken(1);
+            ItemInterface[] menuItems;
+            menuItems = tr[ch];
+            foreach(ItemInterface menuItem in menuItems)
             {
-                ChickenOrder chickenOrder = new ChickenOrder(quantity);
-                this.objectOrder = chickenOrder;
-            }
-            else if (menu == menu.Egg)
-            {
-                EggOrder eggOrder = new EggOrder(quantity);
-                this.objectOrder = eggOrder;
-            }
-
-            return this.objectOrder;
-        }
-
-        public string Inspect()
-        {
-            if (this.objectOrder is ChickenOrder)
-            {
-                return "no inspection is required";
-            }
-            else
-            {
-                EggOrder eggOrder = (EggOrder)this.objectOrder;
-                return "Egg Quality:" + eggOrder.GetQuality();
-            }
-        }
-        
-        public string Prepare()
-        {
-            
-            if (this.objectOrder is ChickenOrder)
-            {
-                ChickenOrder chickOrder = (ChickenOrder)this.objectOrder;
-
+                Chicken chickOrder = (Chicken)menuItem;
                 for (int i = 1; i <= chickOrder.GetQuantity(); i++)
                 {
                     chickOrder.CutUp();
                 }
                 chickOrder.Cook();
-                return "Preparation has been completed.";
             }
-            else
-            {
-                int countRottenEggs = 0;
-                EggOrder eggOrder = (EggOrder)this.objectOrder;
-                for (int i = 1; i <= eggOrder.GetQuantity(); i++)
-                {
-                    try
-                    {
-                        eggOrder.Crack();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        countRottenEggs++;
-                    }
 
-                    eggOrder.DiscardShell();
+            Egg egg = new Egg(1);
+            menuItems = tr[egg];
+            int countRottenEggs = 0;
+
+            foreach (ItemInterface menuItem in menuItems)
+            {
+                using (Egg eggOrder = (Egg)menuItem)
+                {
+                    for (int i = 1; i <= eggOrder.GetQuantity(); i++)
+                    {
+                        try
+                        {
+                            eggOrder.Crack();
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            countRottenEggs++;
+                        }
+
+                        eggOrder.DiscardShell();
+                    }
+                    eggOrder.Cook();
                 }
-                eggOrder.Cook();
-                return "Preparation has been completed. Number of rotten eggs-" + countRottenEggs;
+                   
             }
         }
 
+       /* public string Inspect()
+        {
+            if (this.objectOrder is Chicken)
+            {
+                return "no inspection is required";
+            }
+            else
+            {
+                Egg egg = (Egg)this.objectOrder;
+                return "Egg Quality:" + egg.GetQuality();
+            }
+        }
+        */
 
     }
 }
