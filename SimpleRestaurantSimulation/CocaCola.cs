@@ -8,12 +8,9 @@ namespace SimpleRestaurantSimulation
 {
     class CocaCola : Drink
     {
-        public CocaCola(int quantity) : base(quantity)
+        public CocaCola() : base()
         {
         }
-
-        public override void Drinks()
-        {
-        }
+        
     }
 }

@@ -40,7 +40,7 @@ namespace SimpleRestaurantSimulation
         {
             try
             {                
-                TextQualityResult.Text= server.Send();
+                server.Send();
             }
             catch (Exception ex)
             {

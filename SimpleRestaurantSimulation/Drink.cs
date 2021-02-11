@@ -7,17 +7,24 @@ using System.Threading.Tasks;
 namespace SimpleRestaurantSimulation
 {
     //TODO: in abstract class meshavad
-    class Drink : MenuItem
+    abstract class Drink : MenuItem
     {
         //TODO: Baroi drink quantity lozim nest.
-        public Drink(int quantity) : base(quantity)
-        {
-        }
-
-        //TODO: Drinks() method baroi chi lozim ast? 
-        public virtual void Drinks()
+        public Drink() : base()
         {
 
         }
+
+        public override void Obtained()
+        {
+            
+        }
+
+        public override void Served()
+        {
+            
+        }
+
+
     }
 }

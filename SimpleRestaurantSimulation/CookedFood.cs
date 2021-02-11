@@ -7,15 +7,27 @@ using System.Threading.Tasks;
 namespace SimpleRestaurantSimulation
 {
     //TODO: in abstract class meshavad
-    class CookedFood : MenuItem
+    abstract class CookedFood : MenuItem
     {
-        public CookedFood(int quantity) : base(quantity)
+        public int quantity;
+        public CookedFood(int quantity) : base()
         {
+            this.quantity = quantity;
         }
-        //TODO: in abstract method meshavad
-        public virtual void Cook()
+
+        public int GetQuantity() => this.quantity;
+
+        public override void Obtained()
         {
 
         }
+
+        public override void Served()
+        {
+           
+        }
+
+        //TODO: in abstract method meshavad
+        public abstract void Cook();
     }
 }

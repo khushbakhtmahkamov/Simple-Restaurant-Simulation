@@ -12,10 +12,10 @@ namespace SimpleRestaurantSimulation
         private bool disposed = false;
         public Egg(int quantity) : base(quantity)
         {
+            Random rand = new Random();
+            this.quality = rand.Next(101);
         }
 
-        //TODO: It's not used
-        public int? GetQuality() => this.quality;
 
         public void Crack()
         {
@@ -27,7 +27,7 @@ namespace SimpleRestaurantSimulation
 
         public override void Cook()
         {
-            Console.WriteLine("Cook-Egg");
+
         }
 
         public void DiscardShell()

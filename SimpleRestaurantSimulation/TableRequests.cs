@@ -44,6 +44,7 @@ namespace SimpleRestaurantSimulation
             get
             {
                 //TODO: Code bisyor shudaast. Agar shavad code refactor karda codea kam kuned. Codeho dublicate shudaast
+                // Yagon namudi digari kam kardani code ba fikram naomad
                 int count = 0;
                 for (int i = 0; i < 8; i++)
                 {

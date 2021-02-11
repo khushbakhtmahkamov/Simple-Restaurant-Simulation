@@ -10,10 +10,9 @@ namespace SimpleRestaurantSimulation
     {
         Cook cook = new Cook();
         int numberObject = 0;
-        menu[][] orderMenu; //TODO: in massiv lozim nest 
+        //menu[][] orderMenu; //TODO: in massiv lozim nest 
         
         TableRequests tr;
-        int countArray = 0;
         int customer = 0;
         string[] result;
         public Server()
@@ -26,9 +25,7 @@ namespace SimpleRestaurantSimulation
             if (numberObject == 0)
             {
                 tr = new TableRequests();
-                orderMenu = new menu[8][];
                 numberObject = 1;
-                countArray = 0;
                 customer = 0;
             }
             if (customer > 7)
@@ -37,52 +34,43 @@ namespace SimpleRestaurantSimulation
             }
 
             if (numberChicken > 0)
-            {
-                ItemInterface i; //TODO: Be istifodai hamin variable shuda metavonad. Inchunin codei hamin methodro kam kuned.
+            { //TODO: Be istifodai hamin variable shuda metavonad. Inchunin codei hamin methodro kam kuned.
                 Chicken chicken = new Chicken(numberChicken);
-                i = chicken;
-                tr.Add(customer, i);
+                tr.Add(customer, chicken);
             }
 
             if (numberEgg > 0)
             {
-                ItemInterface i;
                 Egg egg = new Egg(numberEgg);
-                i = egg;
-                tr.Add(customer, i);
+                tr.Add(customer, egg);
             }
 
             if (typeDrink != menu.NoDrink)
             {
-                ItemInterface i;
                 if (typeDrink == menu.Pepsi)
                 {
-                    Pepsi pepsi = new Pepsi(1);
-                    i = pepsi;
+                    Pepsi pepsi = new Pepsi();
+                    tr.Add(customer, pepsi);
                 }
                 else if(typeDrink == menu.Cola)
                 {
-                    CocaCola cola = new CocaCola(1);
-                    i = cola;
+                    CocaCola cola = new CocaCola();
+                    tr.Add(customer, cola);
                 }
                 else
                 {
-                    Tea tea = new Tea(1);
-                    i = tea;
+                    Tea tea = new Tea();
+                    tr.Add(customer, tea);
                 }
-                tr.Add(customer, i);
             }
             customer++;
             
         }
 
-        public string Send()
+        public void Send()
         {
-            string qualityResult = ""; //TODO: ?
             cook.Process(tr);
-
             
-            return qualityResult;
         }
 
         public string[] Serve()

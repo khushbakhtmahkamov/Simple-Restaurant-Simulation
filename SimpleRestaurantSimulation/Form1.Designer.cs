@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.receiveRequestCustomer = new System.Windows.Forms.Button();
+            this.typeDrink = new System.Windows.Forms.ComboBox();
+            this.quantityEgg = new System.Windows.Forms.TextBox();
+            this.quantityChicken = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.TextQualityResult = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textResult = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.quantityChicken = new System.Windows.Forms.TextBox();
-            this.quantityEgg = new System.Windows.Forms.TextBox();
-            this.typeDrink = new System.Windows.Forms.ComboBox();
-            this.receiveRequestCustomer = new System.Windows.Forms.Button();
             this.sendCustomerRequestsCook = new System.Windows.Forms.Button();
             this.serveFoodCustomers = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -60,15 +60,64 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
+            // receiveRequestCustomer
+            // 
+            this.receiveRequestCustomer.Location = new System.Drawing.Point(47, 115);
+            this.receiveRequestCustomer.Name = "receiveRequestCustomer";
+            this.receiveRequestCustomer.Size = new System.Drawing.Size(318, 30);
+            this.receiveRequestCustomer.TabIndex = 5;
+            this.receiveRequestCustomer.Text = "Receive this request from a Customer";
+            this.receiveRequestCustomer.UseVisualStyleBackColor = true;
+            this.receiveRequestCustomer.Click += new System.EventHandler(this.receiveRequestCustomer_Click);
+            // 
+            // typeDrink
+            // 
+            this.typeDrink.FormattingEnabled = true;
+            this.typeDrink.Location = new System.Drawing.Point(292, 53);
+            this.typeDrink.Name = "typeDrink";
+            this.typeDrink.Size = new System.Drawing.Size(121, 28);
+            this.typeDrink.TabIndex = 4;
+            // 
+            // quantityEgg
+            // 
+            this.quantityEgg.Location = new System.Drawing.Point(180, 74);
+            this.quantityEgg.Name = "quantityEgg";
+            this.quantityEgg.Size = new System.Drawing.Size(62, 26);
+            this.quantityEgg.TabIndex = 3;
+            // 
+            // quantityChicken
+            // 
+            this.quantityChicken.Location = new System.Drawing.Point(180, 34);
+            this.quantityChicken.Name = "quantityChicken";
+            this.quantityChicken.Size = new System.Drawing.Size(62, 26);
+            this.quantityChicken.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "How many egg?";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(150, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "How many chicken?";
+            // 
             // TextQualityResult
             // 
             this.TextQualityResult.AutoSize = true;
             this.TextQualityResult.Location = new System.Drawing.Point(32, 228);
             this.TextQualityResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TextQualityResult.Name = "TextQualityResult";
-            this.TextQualityResult.Size = new System.Drawing.Size(65, 20);
+            this.TextQualityResult.Size = new System.Drawing.Size(0, 20);
             this.TextQualityResult.TabIndex = 5;
-            this.TextQualityResult.Text = "Quality: ";
             // 
             // label3
             // 
@@ -89,56 +138,6 @@
             this.textResult.Name = "textResult";
             this.textResult.Size = new System.Drawing.Size(446, 109);
             this.textResult.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "How many chicken?";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 77);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "How many egg?";
-            // 
-            // quantityChicken
-            // 
-            this.quantityChicken.Location = new System.Drawing.Point(180, 34);
-            this.quantityChicken.Name = "quantityChicken";
-            this.quantityChicken.Size = new System.Drawing.Size(62, 26);
-            this.quantityChicken.TabIndex = 2;
-            // 
-            // quantityEgg
-            // 
-            this.quantityEgg.Location = new System.Drawing.Point(180, 74);
-            this.quantityEgg.Name = "quantityEgg";
-            this.quantityEgg.Size = new System.Drawing.Size(62, 26);
-            this.quantityEgg.TabIndex = 3;
-            // 
-            // typeDrink
-            // 
-            this.typeDrink.FormattingEnabled = true;
-            this.typeDrink.Location = new System.Drawing.Point(292, 53);
-            this.typeDrink.Name = "typeDrink";
-            this.typeDrink.Size = new System.Drawing.Size(121, 28);
-            this.typeDrink.TabIndex = 4;
-            // 
-            // receiveRequestCustomer
-            // 
-            this.receiveRequestCustomer.Location = new System.Drawing.Point(47, 115);
-            this.receiveRequestCustomer.Name = "receiveRequestCustomer";
-            this.receiveRequestCustomer.Size = new System.Drawing.Size(318, 30);
-            this.receiveRequestCustomer.TabIndex = 5;
-            this.receiveRequestCustomer.Text = "Receive this request from a Customer";
-            this.receiveRequestCustomer.UseVisualStyleBackColor = true;
-            this.receiveRequestCustomer.Click += new System.EventHandler(this.receiveRequestCustomer_Click);
             // 
             // sendCustomerRequestsCook
             // 

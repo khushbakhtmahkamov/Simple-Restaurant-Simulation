@@ -8,7 +8,6 @@ namespace SimpleRestaurantSimulation
 {
     interface ItemInterface
     {
-        int GetQuantity();
         void Obtained();
         void Served();
     }

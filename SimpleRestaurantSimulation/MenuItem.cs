@@ -8,24 +8,17 @@ namespace SimpleRestaurantSimulation
 {
     abstract class MenuItem : ItemInterface
     {
-        public int quantity;
-        public MenuItem(int quantity)
+        
+        public MenuItem()
         {
-            this.quantity = quantity;
         }
 
         //TODO: remove this method
-        public int GetQuantity() => this.quantity;
+
 
         //TODO: Obtained() and Served() methods should be abstract
-        public void Obtained()
-        {
+        public abstract void Obtained();
 
-        }
-
-        public void Served()
-        {
-
-        }
+        public abstract void Served();
     }
 }

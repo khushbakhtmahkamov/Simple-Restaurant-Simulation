@@ -18,7 +18,7 @@ namespace SimpleRestaurantSimulation
 
         public override void Cook()
         {
-            Console.WriteLine("Cook-Checken");
+
         }
     }
 }
