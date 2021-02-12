@@ -30,7 +30,7 @@ namespace SimpleRestaurantSimulation
         public ItemInterface[] this[int customer]
         {
             get
-            {                
+            {
                 ItemInterface[] result = new ItemInterface[3];
                 result[0] = menuItem[customer, 0];
                 result[1] = menuItem[customer, 1];
@@ -43,53 +43,17 @@ namespace SimpleRestaurantSimulation
         {
             get
             {
-                //TODO: Code bisyor shudaast. Agar shavad code refactor karda codea kam kuned. Codeho dublicate shudaast
-                // Yagon namudi digari kam kardani code ba fikram naomad
+                ItemInterface[] result = new ItemInterface[0];
                 int count = 0;
                 for (int i = 0; i < 8; i++)
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        if (item is Chicken)
+                        if (menuItem[i, j] != null && menuItem[i, j].GetType().Equals(item.GetType()))
                         {
-                            if (menuItem[i, j] is Chicken)
-                            {
-                                count++;
-                            }
-                        }
-                        else
-                        {
-                            if (menuItem[i, j] is Egg)
-                            {
-                                count++;
-                            }
-                        }
-                        
-                    }
-                }
-
-                ItemInterface[] result = new ItemInterface[count];
-                count = 0;
-
-                for (int i = 0; i < 8; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        if (item is Chicken)
-                        {
-                            if (menuItem[i, j] is Chicken)
-                            {
-                                result[count] = menuItem[i, j];
-                                count++;
-                            }
-                        }
-                        else
-                        {
-                            if (menuItem[i, j] is Egg)
-                            {
-                                result[count] = menuItem[i, j];
-                                count++;
-                            }
+                            Array.Resize(ref result, count + 1);
+                            result[count] = menuItem[i, j];
+                            count++;
                         }
                     }
                 }

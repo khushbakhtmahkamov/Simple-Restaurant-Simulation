@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    //TODO: in abstract class meshavad
     abstract class CookedFood : MenuItem
     {
         public int quantity;
@@ -27,7 +26,6 @@ namespace SimpleRestaurantSimulation
            
         }
 
-        //TODO: in abstract method meshavad
         public abstract void Cook();
     }
 }

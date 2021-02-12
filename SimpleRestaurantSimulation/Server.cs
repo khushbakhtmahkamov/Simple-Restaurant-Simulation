@@ -10,14 +10,11 @@ namespace SimpleRestaurantSimulation
     {
         Cook cook = new Cook();
         int numberObject = 0;
-        //menu[][] orderMenu; //TODO: in massiv lozim nest 
-        
         TableRequests tr;
         int customer = 0;
         string[] result;
         public Server()
         {
-
         }
 
         public void Receive(int numberChicken, int numberEgg, menu typeDrink)
@@ -34,7 +31,7 @@ namespace SimpleRestaurantSimulation
             }
 
             if (numberChicken > 0)
-            { //TODO: Be istifodai hamin variable shuda metavonad. Inchunin codei hamin methodro kam kuned.
+            {
                 Chicken chicken = new Chicken(numberChicken);
                 tr.Add(customer, chicken);
             }
@@ -52,7 +49,7 @@ namespace SimpleRestaurantSimulation
                     Pepsi pepsi = new Pepsi();
                     tr.Add(customer, pepsi);
                 }
-                else if(typeDrink == menu.Cola)
+                else if (typeDrink == menu.Cola)
                 {
                     CocaCola cola = new CocaCola();
                     tr.Add(customer, cola);
@@ -64,20 +61,18 @@ namespace SimpleRestaurantSimulation
                 }
             }
             customer++;
-            
         }
 
         public void Send()
         {
             cook.Process(tr);
-            
         }
 
         public string[] Serve()
         {
             result = new string[customer];
             ItemInterface[] menuItem;
-            for(int i = 0; i < customer; i++)
+            for (int i = 0; i < customer; i++)
             {
                 menuItem = tr[i];
                 int numberChiken = 0;
@@ -86,7 +81,7 @@ namespace SimpleRestaurantSimulation
                 if (menuItem[0] != null)
                 {
                     Chicken chicken = (Chicken)menuItem[0];
-                    numberChiken=chicken.GetQuantity();
+                    numberChiken = chicken.GetQuantity();
                 }
 
                 if (menuItem[1] != null)
@@ -97,7 +92,7 @@ namespace SimpleRestaurantSimulation
 
                 if (menuItem[2] != null)
                 {
-                    if(menuItem[2] is CocaCola)
+                    if (menuItem[2] is CocaCola)
                     {
                         drink = menu.Cola;
                     }
@@ -115,7 +110,7 @@ namespace SimpleRestaurantSimulation
                 result[i] = "Customer " + i + " is served " + numberChiken + " chicken, " + numberEgg + " egg, " + drink;
             }
 
-            if (result == null || result.Length==0 )
+            if (result == null || result.Length == 0)
             {
                 throw new NullReferenceException("order not sent to the Cook");
             }

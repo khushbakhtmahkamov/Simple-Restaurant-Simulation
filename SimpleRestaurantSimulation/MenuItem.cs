@@ -8,15 +8,10 @@ namespace SimpleRestaurantSimulation
 {
     abstract class MenuItem : ItemInterface
     {
-        
         public MenuItem()
         {
         }
 
-        //TODO: remove this method
-
-
-        //TODO: Obtained() and Served() methods should be abstract
         public abstract void Obtained();
 
         public abstract void Served();
