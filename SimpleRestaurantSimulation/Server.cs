@@ -30,13 +30,13 @@ namespace SimpleRestaurantSimulation
                 throw new ArgumentOutOfRangeException("Maximum number of orders 8");
             }
 
-            if (numberChicken > 1)
+            if (numberChicken >= 1)
             {
                 Chicken chicken = new Chicken(numberChicken);
                 tr.Add(customer, chicken);
             }
 
-            if (numberEgg > 1)
+            if (numberEgg >= 1)
             {
                 Egg egg = new Egg(numberEgg);
                 tr.Add(customer, egg);
@@ -61,7 +61,7 @@ namespace SimpleRestaurantSimulation
                 }
             }
 
-            if(numberChicken > 1 || numberEgg > 1 || typeDrink != menu.NoDrink)
+            if(numberChicken >= 1 || numberEgg >= 1 || typeDrink != menu.NoDrink)
                 customer++;
         }
 
