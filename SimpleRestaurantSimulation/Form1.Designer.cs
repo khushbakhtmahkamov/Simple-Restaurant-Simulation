@@ -40,11 +40,13 @@
             this.textResult = new System.Windows.Forms.TextBox();
             this.sendCustomerRequestsCook = new System.Windows.Forms.Button();
             this.serveFoodCustomers = new System.Windows.Forms.Button();
+            this.customerName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.customerName);
             this.groupBox1.Controls.Add(this.receiveRequestCustomer);
             this.groupBox1.Controls.Add(this.typeDrink);
             this.groupBox1.Controls.Add(this.quantityEgg);
@@ -64,9 +66,9 @@
             // 
             this.receiveRequestCustomer.Location = new System.Drawing.Point(47, 115);
             this.receiveRequestCustomer.Name = "receiveRequestCustomer";
-            this.receiveRequestCustomer.Size = new System.Drawing.Size(318, 30);
+            this.receiveRequestCustomer.Size = new System.Drawing.Size(217, 30);
             this.receiveRequestCustomer.TabIndex = 5;
-            this.receiveRequestCustomer.Text = "Receive this request from a Customer";
+            this.receiveRequestCustomer.Text = "Receive this request from:";
             this.receiveRequestCustomer.UseVisualStyleBackColor = true;
             this.receiveRequestCustomer.Click += new System.EventHandler(this.receiveRequestCustomer_Click);
             // 
@@ -159,6 +161,13 @@
             this.serveFoodCustomers.UseVisualStyleBackColor = true;
             this.serveFoodCustomers.Click += new System.EventHandler(this.serveFoodCustomers_Click);
             // 
+            // customerName
+            // 
+            this.customerName.Location = new System.Drawing.Point(292, 117);
+            this.customerName.Name = "customerName";
+            this.customerName.Size = new System.Drawing.Size(121, 26);
+            this.customerName.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -196,6 +205,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button sendCustomerRequestsCook;
         private System.Windows.Forms.Button serveFoodCustomers;
+        private System.Windows.Forms.TextBox customerName;
     }
 }
 

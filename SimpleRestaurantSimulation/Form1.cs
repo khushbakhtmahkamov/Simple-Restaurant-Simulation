@@ -27,7 +27,7 @@ namespace SimpleRestaurantSimulation
             try
             {
                 menu drink = (menu)Enum.Parse(typeof(menu), typeDrink.SelectedItem.ToString());
-                server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink);
+                server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink,customerName.Text);
             }
             catch (Exception ex)
             {

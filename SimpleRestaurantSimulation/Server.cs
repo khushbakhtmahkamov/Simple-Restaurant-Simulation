@@ -8,20 +8,22 @@ namespace SimpleRestaurantSimulation
 {
     class Server
     {
+        public delegate void ReadyDelegate();
+        public event ReadyDelegate Ready;
         Cook cook = new Cook();
         int numberObject = 0;
-        TableRequests tr;
+        TableRequests<ItemInterface> tr;
         int customer = 0;
         string[] result;
         public Server()
         {
         }
 
-        public void Receive(int numberChicken, int numberEgg, menu typeDrink)
+        public void Receive(int numberChicken, int numberEgg, menu typeDrink,string customerName)
         {
             if (numberObject == 0)
             {
-                tr = new TableRequests();
+                tr = new TableRequests<ItemInterface>();
                 numberObject = 1;
                 customer = 0;
             }
@@ -33,13 +35,13 @@ namespace SimpleRestaurantSimulation
             if (numberChicken >= 1)
             {
                 Chicken chicken = new Chicken(numberChicken);
-                tr.Add(customer, chicken);
+                tr.Add(customerName, chicken);
             }
 
             if (numberEgg >= 1)
             {
                 Egg egg = new Egg(numberEgg);
-                tr.Add(customer, egg);
+                tr.Add(customerName, egg);
             }
 
             if (typeDrink != menu.NoDrink)
@@ -47,17 +49,17 @@ namespace SimpleRestaurantSimulation
                 if (typeDrink == menu.Pepsi)
                 {
                     Pepsi pepsi = new Pepsi();
-                    tr.Add(customer, pepsi);
+                    tr.Add(customerName, pepsi);
                 }
                 else if (typeDrink == menu.Cola)
                 {
                     CocaCola cola = new CocaCola();
-                    tr.Add(customer, cola);
+                    tr.Add(customerName, cola);
                 }
                 else
                 {
                     Tea tea = new Tea();
-                    tr.Add(customer, tea);
+                    tr.Add(customerName, tea);
                 }
             }
 
@@ -67,49 +69,58 @@ namespace SimpleRestaurantSimulation
 
         public void Send()
         {
-            cook.Process(tr);
+            Ready+=(()=> { cook.Process(tr); });
+            Ready();
         }
 
         public string[] Serve()
         {
-            result = new string[customer];
-            ItemInterface[] menuItem;
-            for (int i = 0; i < customer; i++)
+            result = new string[0];
+            List<ItemInterface> menuItem;
+            int j = 0;
+            foreach (string customer in tr.GetOrder())
             {
-                menuItem = tr[i];
+                menuItem = tr[customer];
                 int numberChiken = 0;
                 int numberEgg = 0;
                 menu drink = menu.NoDrink;
-                if (menuItem[0] != null)
+                foreach (ItemInterface order in menuItem)
                 {
-                    Chicken chicken = (Chicken)menuItem[0];
-                    numberChiken = chicken.GetQuantity();
-                }
-
-                if (menuItem[1] != null)
-                {
-                    Egg egg = (Egg)menuItem[1];
-                    numberEgg = egg.GetQuantity();
-                }
-
-                if (menuItem[2] != null)
-                {
-                    if (menuItem[2] is CocaCola)
+                   
+                    if (order is Chicken)
                     {
-                        drink = menu.Cola;
+                        Chicken chicken = (Chicken)menuItem[0];
+                        numberChiken = chicken.GetQuantity();
+                    }
+                    else if(order is Egg)
+                    {
+                        Egg egg = (Egg)menuItem[1];
+                        numberEgg = egg.GetQuantity();
+                    }
+                    else
+                    {
+                        if (menuItem[2] is CocaCola)
+                        {
+                            drink = menu.Cola;
+                        }
+
+                        if (menuItem[2] is Pepsi)
+                        {
+                            drink = menu.Pepsi;
+                        }
+
+                        if (menuItem[2] is Tea)
+                        {
+                            drink = menu.Tea;
+                        }
                     }
 
-                    if (menuItem[2] is Pepsi)
-                    {
-                        drink = menu.Pepsi;
-                    }
-
-                    if (menuItem[2] is Tea)
-                    {
-                        drink = menu.Tea;
-                    }
                 }
-                result[i] = "Customer " + i + " is served " + numberChiken + " chicken, " + numberEgg + " egg, " + drink;
+
+                Array.Resize(ref result, j + 1);
+                result[j] = "Customer " + customer + " is served " + drink + ", " + numberChiken + " chicken, " + numberEgg + " egg";
+                j++;
+
             }
 
             if (result == null || result.Length == 0)

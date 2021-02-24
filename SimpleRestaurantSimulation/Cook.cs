@@ -8,15 +8,17 @@ namespace SimpleRestaurantSimulation
 {
     class Cook
     {
+        public delegate void ProcessedDelegate();
+        public event ProcessedDelegate Processed;
         public Cook()
         {
         }
 
-        public void Process(TableRequests tr)
+        public void Process(TableRequests<ItemInterface> tr)
         {
             Chicken ch = new Chicken(1);
-            ItemInterface[] menuItems;
-            menuItems = tr[ch];
+            List<ItemInterface> menuItems;
+            menuItems = tr.Get(ch);
             foreach (ItemInterface menuItem in menuItems)
             {
                 Chicken chickOrder = (Chicken)menuItem;
@@ -28,7 +30,7 @@ namespace SimpleRestaurantSimulation
             }
 
             Egg egg = new Egg(1);
-            menuItems = tr[egg];
+            menuItems = tr.Get(egg);
             int countRottenEggs = 0;
 
             foreach (ItemInterface menuItem in menuItems)
@@ -52,6 +54,8 @@ namespace SimpleRestaurantSimulation
                 }
 
             }
+
+           // Processed();
         }
     }
 }

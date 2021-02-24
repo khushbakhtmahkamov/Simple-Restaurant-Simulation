@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,59 +7,77 @@ using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
-    class TableRequests
+    class TableRequests <T>:IEnumerable<T>
     {
-        private int number = 0;
-        ItemInterface[,] menuItem = new ItemInterface[8, 3];
-        public void Add(int customer, ItemInterface i)
+        Dictionary<string,List<T>> menuItem = new Dictionary<string, List<T>>();
+        public void Add(string customer, T i)
         {
-            if (i is Chicken)
+            List<T> order=new List<T>();
+            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
             {
-                menuItem[customer, 0] = i;
-            }
-            else if (i is Egg)
-            {
-                menuItem[customer, 1] = i;
-            }
-            else
-            {
-                menuItem[customer, 2] = i;
-            }
-            number++;
-        }
-
-        public ItemInterface[] this[int customer]
-        {
-            get
-            {
-                ItemInterface[] result = new ItemInterface[3];
-                result[0] = menuItem[customer, 0];
-                result[1] = menuItem[customer, 1];
-                result[2] = menuItem[customer, 2];
-                return result;
-            }
-        }
-
-        public ItemInterface[] this[ItemInterface item]
-        {
-            get
-            {
-                ItemInterface[] result = new ItemInterface[0];
-                int count = 0;
-                for (int i = 0; i < 8; i++)
+                if (keyValue.Key == customer)
                 {
-                    for (int j = 0; j < 3; j++)
+                    order = keyValue.Value;
+                }
+            }
+            order.Add(i);
+            menuItem[customer]= order;
+           
+        }
+
+        public List<string> GetOrder()
+        {
+            List<string> order = new List<string>();
+            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            {
+                order.Add(keyValue.Key);
+            }
+
+            return order;
+        }
+
+        public List<T> Get(T order)
+        {
+            List<T> list = new List<T>();
+            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            {
+                list.Add(keyValue.Value.Find(x=>x.GetType().Equals(order.GetType())));
+            }
+            return list;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            {
+               foreach(T order in keyValue.Value)
+               {
+                    yield return order;
+               }
+                   
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<T> this[string customer]
+        {
+            get
+            {
+                List<T> result = new List<T>();
+                foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+                {
+                    if (keyValue.Key == customer)
                     {
-                        if (menuItem[i, j] != null && menuItem[i, j].GetType().Equals(item.GetType()))
-                        {
-                            Array.Resize(ref result, count + 1);
-                            result[count] = menuItem[i, j];
-                            count++;
-                        }
+                        result = keyValue.Value;
                     }
                 }
                 return result;
             }
         }
+
     }
 }
