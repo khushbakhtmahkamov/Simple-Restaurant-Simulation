@@ -9,15 +9,15 @@ namespace SimpleRestaurantSimulation
     class Cook
     {
         public delegate void ProcessedDelegate();
-        public event ProcessedDelegate Processed;
+        public event ProcessedDelegate Processed; //TODO: Please use this event
         public Cook()
         {
         }
-
+        //TODO: Refactor this method to be smaller.
         public void Process(TableRequests<ItemInterface> tr)
         {
-            Chicken ch = new Chicken(1);
-            List<ItemInterface> menuItems;
+            Chicken ch = new Chicken(1);  //TODO: Can you get list of menus without creating new object or new Chicken?
+            List<ItemInterface> menuItems; //TODO: What about using CookedFood type here instead of ItemInterface? becauae Cook doesn't need to know about drinks.
             menuItems = tr.Get(ch);
             foreach (ItemInterface menuItem in menuItems)
             {
@@ -55,7 +55,7 @@ namespace SimpleRestaurantSimulation
 
             }
 
-           // Processed();
+           //Processed();
         }
     }
 }

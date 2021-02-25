@@ -12,6 +12,7 @@ namespace SimpleRestaurantSimulation
         {
         }
 
+        //TODO: Obtain and Serve methods should be abstract in this class
         public override void Obtained()
         {
         }

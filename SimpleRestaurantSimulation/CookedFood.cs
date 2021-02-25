@@ -16,6 +16,7 @@ namespace SimpleRestaurantSimulation
 
         public int GetQuantity() => this.quantity;
 
+        //TODO: Obtain and Serve method should be abstract method in this class
         public override void Obtained()
         {
 

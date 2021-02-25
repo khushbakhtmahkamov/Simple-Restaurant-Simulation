@@ -15,7 +15,7 @@ namespace SimpleRestaurantSimulation
     {
 
         Server server = new Server();
-        Object o;
+        //Object o;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace SimpleRestaurantSimulation
         {
             try
             {
+                //TODO: If I receive request more time for the same customer it should add new request without removing existed one.
                 menu drink = (menu)Enum.Parse(typeof(menu), typeDrink.SelectedItem.ToString());
                 server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink,customerName.Text);
             }

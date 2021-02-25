@@ -19,7 +19,8 @@ namespace SimpleRestaurantSimulation
         {
         }
 
-        public void Receive(int numberChicken, int numberEgg, menu typeDrink,string customerName)
+        //TODO: Refactor this method to be smaller.
+        public void Receive(int numberChicken, int numberEgg, menu typeDrink, string customerName)
         {
             if (numberObject == 0)
             {
@@ -63,16 +64,17 @@ namespace SimpleRestaurantSimulation
                 }
             }
 
-            if(numberChicken >= 1 || numberEgg >= 1 || typeDrink != menu.NoDrink)
+            if (numberChicken >= 1 || numberEgg >= 1 || typeDrink != menu.NoDrink)
                 customer++;
         }
 
         public void Send()
         {
-            Ready+=(()=> { cook.Process(tr); });
+            Ready += (() => { cook.Process(tr); });
             Ready();
         }
 
+        //TODO: The server should iterate over the TableRequests and serve each food...
         public string[] Serve()
         {
             result = new string[0];
@@ -86,13 +88,13 @@ namespace SimpleRestaurantSimulation
                 menu drink = menu.NoDrink;
                 foreach (ItemInterface order in menuItem)
                 {
-                   
+
                     if (order is Chicken)
                     {
                         Chicken chicken = (Chicken)menuItem[0];
                         numberChiken = chicken.GetQuantity();
                     }
-                    else if(order is Egg)
+                    else if (order is Egg)
                     {
                         Egg egg = (Egg)menuItem[1];
                         numberEgg = egg.GetQuantity();
