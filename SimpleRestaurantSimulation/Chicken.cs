@@ -11,6 +11,7 @@ namespace SimpleRestaurantSimulation
         public Chicken(int quantity) : base(quantity)
         {
         }
+        
         public void CutUp()
         {
 

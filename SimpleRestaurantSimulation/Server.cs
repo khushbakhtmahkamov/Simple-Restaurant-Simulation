@@ -12,9 +12,9 @@ namespace SimpleRestaurantSimulation
         public event ReadyDelegate Ready;
         Cook cook = new Cook();
         int numberObject = 0;
-        TableRequests<ItemInterface> tr;
-        int customer = 0;
-        string[] result;
+        public TableRequests tr;
+        
+        public string[] result;
         public Server()
         {
         }
@@ -24,10 +24,16 @@ namespace SimpleRestaurantSimulation
         {
             if (numberObject == 0)
             {
-                tr = new TableRequests<ItemInterface>();
+                tr = new TableRequests();
                 numberObject = 1;
-                customer = 0;
             }
+
+            int customer = 0;
+            foreach (string c in tr)
+            {
+                customer++;
+            }
+
             if (customer > 7)
             {
                 throw new ArgumentOutOfRangeException("Maximum number of orders 8");
@@ -35,102 +41,107 @@ namespace SimpleRestaurantSimulation
 
             if (numberChicken >= 1)
             {
-                Chicken chicken = new Chicken(numberChicken);
-                tr.Add(customerName, chicken);
+                for(int i=0;i< numberChicken; i++)
+                {
+                    tr.Add<Chicken>(customerName);
+                }
+               
             }
 
             if (numberEgg >= 1)
             {
-                Egg egg = new Egg(numberEgg);
-                tr.Add(customerName, egg);
+                for (int i = 0; i < numberEgg; i++)
+                {
+                    tr.Add<Egg>(customerName);
+                }
+                    
             }
 
             if (typeDrink != menu.NoDrink)
             {
                 if (typeDrink == menu.Pepsi)
                 {
-                    Pepsi pepsi = new Pepsi();
-                    tr.Add(customerName, pepsi);
+                    tr.Add<Pepsi>(customerName);
                 }
                 else if (typeDrink == menu.Cola)
                 {
-                    CocaCola cola = new CocaCola();
-                    tr.Add(customerName, cola);
+                    tr.Add<CocaCola>(customerName);
                 }
                 else
                 {
-                    Tea tea = new Tea();
-                    tr.Add(customerName, tea);
+                    tr.Add<Tea>(customerName);
                 }
             }
-
-            if (numberChicken >= 1 || numberEgg >= 1 || typeDrink != menu.NoDrink)
-                customer++;
+            
         }
 
         public void Send()
         {
-            Ready += (() => { cook.Process(tr); });
+            if (numberObject == 0)
+            {
+                throw new NullReferenceException("Order not added!");
+            }
             Ready();
         }
 
         //TODO: The server should iterate over the TableRequests and serve each food...
-        public string[] Serve()
+        public void Serve()
         {
             result = new string[0];
             List<ItemInterface> menuItem;
             int j = 0;
-            foreach (string customer in tr.GetOrder())
+            foreach (string customer in tr)
             {
                 menuItem = tr[customer];
                 int numberChiken = 0;
                 int numberEgg = 0;
                 menu drink = menu.NoDrink;
+                string drinkAll = "";
                 foreach (ItemInterface order in menuItem)
                 {
 
                     if (order is Chicken)
                     {
-                        Chicken chicken = (Chicken)menuItem[0];
-                        numberChiken = chicken.GetQuantity();
+                        Chicken chicken = (Chicken)order;
+                        numberChiken += chicken.GetQuantity();
                     }
                     else if (order is Egg)
                     {
-                        Egg egg = (Egg)menuItem[1];
-                        numberEgg = egg.GetQuantity();
+                        Egg egg = (Egg)order;
+                        numberEgg += egg.GetQuantity();
                     }
                     else
                     {
-                        if (menuItem[2] is CocaCola)
+                        if (order is CocaCola)
                         {
                             drink = menu.Cola;
+                            drinkAll = drinkAll + drink + ",";
                         }
 
-                        if (menuItem[2] is Pepsi)
+                        if (order is Pepsi)
                         {
                             drink = menu.Pepsi;
+                            drinkAll = drinkAll + drink + ",";
                         }
 
-                        if (menuItem[2] is Tea)
+                        if (order is Tea)
                         {
                             drink = menu.Tea;
+                            drinkAll = drinkAll + drink + ",";
                         }
                     }
 
                 }
 
+                if (drinkAll == "")
+                    drinkAll = menu.NoDrink.ToString();
+
                 Array.Resize(ref result, j + 1);
-                result[j] = "Customer " + customer + " is served " + drink + ", " + numberChiken + " chicken, " + numberEgg + " egg";
+                result[j] = "Customer " + customer + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
                 j++;
 
             }
-
-            if (result == null || result.Length == 0)
-            {
-                throw new NullReferenceException("order not sent to the Cook");
-            }
             numberObject = 0;
-            return result;
         }
     }
 }

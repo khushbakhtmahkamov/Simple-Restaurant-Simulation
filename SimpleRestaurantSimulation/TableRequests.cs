@@ -11,74 +11,86 @@ namespace SimpleRestaurantSimulation
     //1. Why you make this class as generic?
     //2. Do we need to restrict this generic class (type T)? Because when using this class, user can pass different type here.
     //3. Why you used generic of IEnumerable? Can we implement just from IEnumerable?
-    class TableRequests<T> : IEnumerable<T>
+    class TableRequests
     {
-        Dictionary<string, List<T>> menuItem = new Dictionary<string, List<T>>();
+        Dictionary<string, List<ItemInterface>> menuItem = new Dictionary<string, List<ItemInterface>>();
 
         //TODO: This method for this project should like thisL Add<ChickenOrder>("Dilshod")
-        public void Add(string customer, T i)
+        public void Add<T>(string customer) where T:ItemInterface
         {
-            List<T> order = new List<T>();
-            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            Type type = typeof(T);
+            List<ItemInterface> order = new List<ItemInterface>();
+            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
             {
                 if (keyValue.Key == customer)
                 {
                     order = keyValue.Value;
                 }
             }
-            order.Add(i);
-            menuItem[customer] = order;
 
-        }
-
-        //TODO: We don't need this method as it's not definied in presentation
-        public List<string> GetOrder()
-        {
-            List<string> order = new List<string>();
-            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            if (type == typeof(Chicken))
             {
-                order.Add(keyValue.Key);
+                Chicken chicken = new Chicken(1);
+                order.Add(chicken);
             }
-
-            return order;
+            else if(type == typeof(Egg))
+            {
+                Egg egg = new Egg(1);
+                order.Add(egg);
+            }
+            else
+            {
+                if (type == typeof(Pepsi))
+                {
+                    Pepsi pepsi = new Pepsi();
+                    order.Add(pepsi);
+                }
+                else if (type == typeof(CocaCola))
+                {
+                    CocaCola cola = new CocaCola();
+                    order.Add(cola);
+                }
+                else
+                {
+                    Tea tea = new Tea();
+                    order.Add(tea);
+                }
+            }
+            
+            menuItem[customer] = order;
         }
 
-        //TODO: according to the presentation this method should be like this: Get<ChickenOrder>()
-        public List<T> Get(T order)
+        public List<CookedFood> Get<T>() where T:CookedFood
         {
-            List<T> list = new List<T>();
-            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            List<CookedFood> list = new List<CookedFood>();
+            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
             {
-                list.Add(keyValue.Value.Find(x => x.GetType().Equals(order.GetType())));
+                foreach(ItemInterface it in keyValue.Value)
+                {
+                    if (it.GetType().Equals(typeof(T)))
+                    {
+                        list.Add((CookedFood)it);
+                    }
+                }
             }
             return list;
         }
+        
 
-        //TODO: Where this method will be used?
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator<string> GetEnumerator()
         {
-            foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
             {
-                foreach (T order in keyValue.Value)
-                {
-                    yield return order;
-                }
-
+                yield return  keyValue.Key;
             }
         }
 
-        //TODO: Do you think we need this method which is not implpemented
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<T> this[string customer]
+        public List<ItemInterface> this[string customer]
         {
             get
             {
-                List<T> result = new List<T>();
-                foreach (KeyValuePair<string, List<T>> keyValue in menuItem)
+                List<ItemInterface> result = new List<ItemInterface>();
+                foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
                 {
                     if (keyValue.Key == customer)
                     {

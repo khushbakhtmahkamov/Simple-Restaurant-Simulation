@@ -14,48 +14,40 @@ namespace SimpleRestaurantSimulation
         {
         }
         //TODO: Refactor this method to be smaller.
-        public void Process(TableRequests<ItemInterface> tr)
+        public void Process(TableRequests tr)
         {
-            Chicken ch = new Chicken(1);  //TODO: Can you get list of menus without creating new object or new Chicken?
-            List<ItemInterface> menuItems; //TODO: What about using CookedFood type here instead of ItemInterface? becauae Cook doesn't need to know about drinks.
-            menuItems = tr.Get(ch);
+            List<CookedFood> menuItems;
+            
+            menuItems = tr.Get<Chicken>();
             foreach (ItemInterface menuItem in menuItems)
             {
                 Chicken chickOrder = (Chicken)menuItem;
-                for (int i = 1; i <= chickOrder.GetQuantity(); i++)
-                {
-                    chickOrder.CutUp();
-                }
+                chickOrder.CutUp();
                 chickOrder.Cook();
             }
-
-            Egg egg = new Egg(1);
-            menuItems = tr.Get(egg);
+            
+            menuItems = tr.Get<Egg>();
             int countRottenEggs = 0;
-
             foreach (ItemInterface menuItem in menuItems)
             {
                 using (Egg eggOrder = (Egg)menuItem)
                 {
-                    for (int i = 1; i <= eggOrder.GetQuantity(); i++)
+                    try
                     {
-                        try
-                        {
-                            eggOrder.Crack();
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            countRottenEggs++;
-                        }
-
-                        eggOrder.DiscardShell();
+                        eggOrder.Crack();
                     }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        countRottenEggs++;
+                    }
+
+                    eggOrder.DiscardShell();
                     eggOrder.Cook();
                 }
 
             }
 
-           //Processed();
+           Processed();
         }
     }
 }

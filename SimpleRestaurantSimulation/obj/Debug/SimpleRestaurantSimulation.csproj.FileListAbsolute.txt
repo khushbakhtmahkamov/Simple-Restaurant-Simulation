@@ -35,3 +35,12 @@ C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\
 C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.CoreCompileInputs.cache
 C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
 C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe.config
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.pdb
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojResolveAssemblyReference.cache
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Form1.resources
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Properties.Resources.resources
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.Cache
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
+C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
