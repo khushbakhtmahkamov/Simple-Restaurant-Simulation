@@ -35,6 +35,7 @@ namespace SimpleRestaurantSimulation
 
         }
 
+        //TODO: When this Dispose method will be run?
         public void Dispose()
         {
             if (!this.disposed)

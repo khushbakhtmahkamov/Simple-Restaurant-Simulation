@@ -44,3 +44,4 @@ C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimul
 C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.Cache
 C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
 C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
+C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojAssemblyReference.cache

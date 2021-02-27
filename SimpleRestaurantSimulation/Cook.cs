@@ -9,15 +9,15 @@ namespace SimpleRestaurantSimulation
     class Cook
     {
         public delegate void ProcessedDelegate();
-        public event ProcessedDelegate Processed; //TODO: Please use this event
+        public event ProcessedDelegate Processed;
         public Cook()
         {
         }
-        //TODO: Refactor this method to be smaller.
+
         public void Process(TableRequests tr)
         {
             List<CookedFood> menuItems;
-            
+
             menuItems = tr.Get<Chicken>();
             foreach (ItemInterface menuItem in menuItems)
             {
@@ -25,9 +25,8 @@ namespace SimpleRestaurantSimulation
                 chickOrder.CutUp();
                 chickOrder.Cook();
             }
-            
+
             menuItems = tr.Get<Egg>();
-            int countRottenEggs = 0;
             foreach (ItemInterface menuItem in menuItems)
             {
                 using (Egg eggOrder = (Egg)menuItem)
@@ -38,7 +37,6 @@ namespace SimpleRestaurantSimulation
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        countRottenEggs++;
                     }
 
                     eggOrder.DiscardShell();
@@ -47,7 +45,7 @@ namespace SimpleRestaurantSimulation
 
             }
 
-           Processed();
+            Processed();
         }
     }
 }

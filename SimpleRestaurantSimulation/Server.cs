@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
@@ -10,16 +7,14 @@ namespace SimpleRestaurantSimulation
     {
         public delegate void ReadyDelegate();
         public event ReadyDelegate Ready;
-        Cook cook = new Cook();
         int numberObject = 0;
-        public TableRequests tr;
-        
-        public string[] result;
+        public TableRequests tr; //TODO: It should not be public. The server should pass this tableRequest object as a argument of Ready delegate.
+
+        public string[] result; //TODO: Since you are using it in Form1.cs, it's good to make it readonly property.
         public Server()
         {
         }
 
-        //TODO: Refactor this method to be smaller.
         public void Receive(int numberChicken, int numberEgg, menu typeDrink, string customerName)
         {
             if (numberObject == 0)
@@ -28,6 +23,7 @@ namespace SimpleRestaurantSimulation
                 numberObject = 1;
             }
 
+            //TODO: In this project it doesn't metter how many customers request in one time, because we are using Collection instead of array.
             int customer = 0;
             foreach (string c in tr)
             {
@@ -39,22 +35,22 @@ namespace SimpleRestaurantSimulation
                 throw new ArgumentOutOfRangeException("Maximum number of orders 8");
             }
 
-            if (numberChicken >= 1)
+            if (numberChicken >= 1) //TODO: Do we need this "if" condition here?
             {
-                for(int i=0;i< numberChicken; i++)
+                for (int i = 0; i < numberChicken; i++)
                 {
                     tr.Add<Chicken>(customerName);
                 }
-               
+
             }
 
-            if (numberEgg >= 1)
+            if (numberEgg >= 1) //TODO: Do we need this "if" condition here?
             {
                 for (int i = 0; i < numberEgg; i++)
                 {
                     tr.Add<Egg>(customerName);
                 }
-                    
+
             }
 
             if (typeDrink != menu.NoDrink)
@@ -72,7 +68,6 @@ namespace SimpleRestaurantSimulation
                     tr.Add<Tea>(customerName);
                 }
             }
-            
         }
 
         public void Send()
