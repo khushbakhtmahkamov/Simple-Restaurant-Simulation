@@ -18,7 +18,7 @@ namespace SimpleRestaurantSimulation
         
         public Form1()
         {
-            server.Ready += (() => { cook.Process(server.tr); });
+            server.Ready +=  cook.Process;
             cook.Processed += server.Serve;
             InitializeComponent();
         }
@@ -56,7 +56,7 @@ namespace SimpleRestaurantSimulation
             try
             {
                 textResult.Text = "";
-                string[] result = server.result;
+                string[] result = server.Result;
                 if (result == null || result.Length == 0)
                 {
                     throw new NullReferenceException("order not sent to the Cook");

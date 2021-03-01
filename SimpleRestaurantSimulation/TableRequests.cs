@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace SimpleRestaurantSimulation
 {
-    //TODO: Shouldn't we inherit this class from IEnumarable intercafe?
-    class TableRequests
+    class TableRequests:IEnumerable
     {
         Dictionary<string, List<ItemInterface>> menuItem = new Dictionary<string, List<ItemInterface>>();
-
-        //TODO: Can you refactor this method and make this smaller? I think I sent you a link about using Activator class.
+        
         public void Add<T>(string customer) where T : ItemInterface
         {
             Type type = typeof(T);
@@ -20,34 +19,18 @@ namespace SimpleRestaurantSimulation
                     order = keyValue.Value;
                 }
             }
-
-            if (type == typeof(Chicken))
+            
+            
+            if (type == typeof(Egg) || type == typeof(Chicken))
             {
-                Chicken chicken = new Chicken(1);
-                order.Add(chicken);
-            }
-            else if (type == typeof(Egg))
-            {
-                Egg egg = new Egg(1);
-                order.Add(egg);
+                object o = Activator.CreateInstance(type,new Object[] { 1});
+                order.Add((ItemInterface)o);
             }
             else
             {
-                if (type == typeof(Pepsi))
-                {
-                    Pepsi pepsi = new Pepsi();
-                    order.Add(pepsi);
-                }
-                else if (type == typeof(CocaCola))
-                {
-                    CocaCola cola = new CocaCola();
-                    order.Add(cola);
-                }
-                else
-                {
-                    Tea tea = new Tea();
-                    order.Add(tea);
-                }
+                object o = Activator.CreateInstance(type);
+                order.Add((ItemInterface)o);
+               
             }
 
             menuItem[customer] = order;
@@ -77,20 +60,16 @@ namespace SimpleRestaurantSimulation
             }
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+           return this.GetEnumerator();
+        }
+
         public List<ItemInterface> this[string customer]
         {
             get
             {
-                //TODO: Can we use this code: return menuItem[customer];
-                List<ItemInterface> result = new List<ItemInterface>();
-                foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
-                {
-                    if (keyValue.Key == customer)
-                    {
-                        result = keyValue.Value;
-                    }
-                }
-                return result;
+                return menuItem[customer];
             }
         }
 

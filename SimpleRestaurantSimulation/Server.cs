@@ -5,12 +5,19 @@ namespace SimpleRestaurantSimulation
 {
     class Server
     {
-        public delegate void ReadyDelegate();
+        public delegate void ReadyDelegate(TableRequests tr);
         public event ReadyDelegate Ready;
         int numberObject = 0;
-        public TableRequests tr; //TODO: It should not be public. The server should pass this tableRequest object as a argument of Ready delegate.
+        private TableRequests tr; 
+        private string[] _result;
 
-        public string[] result; //TODO: Since you are using it in Form1.cs, it's good to make it readonly property.
+        public string[] Result
+        {
+            get
+            {
+               return _result;
+            }
+        }
         public Server()
         {
         }
@@ -23,34 +30,15 @@ namespace SimpleRestaurantSimulation
                 numberObject = 1;
             }
 
-            //TODO: In this project it doesn't metter how many customers request in one time, because we are using Collection instead of array.
-            int customer = 0;
-            foreach (string c in tr)
+            for (int i = 0; i < numberChicken; i++)
             {
-                customer++;
+                tr.Add<Chicken>(customerName);
             }
 
-            if (customer > 7)
+           
+            for (int i = 0; i < numberEgg; i++)
             {
-                throw new ArgumentOutOfRangeException("Maximum number of orders 8");
-            }
-
-            if (numberChicken >= 1) //TODO: Do we need this "if" condition here?
-            {
-                for (int i = 0; i < numberChicken; i++)
-                {
-                    tr.Add<Chicken>(customerName);
-                }
-
-            }
-
-            if (numberEgg >= 1) //TODO: Do we need this "if" condition here?
-            {
-                for (int i = 0; i < numberEgg; i++)
-                {
-                    tr.Add<Egg>(customerName);
-                }
-
+                tr.Add<Egg>(customerName);
             }
 
             if (typeDrink != menu.NoDrink)
@@ -76,13 +64,12 @@ namespace SimpleRestaurantSimulation
             {
                 throw new NullReferenceException("Order not added!");
             }
-            Ready();
+            Ready(tr);
         }
-
-        //TODO: The server should iterate over the TableRequests and serve each food...
+        
         public void Serve()
         {
-            result = new string[0];
+            _result = new string[0];
             List<ItemInterface> menuItem;
             int j = 0;
             foreach (string customer in tr)
@@ -131,8 +118,8 @@ namespace SimpleRestaurantSimulation
                 if (drinkAll == "")
                     drinkAll = menu.NoDrink.ToString();
 
-                Array.Resize(ref result, j + 1);
-                result[j] = "Customer " + customer + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
+                Array.Resize(ref _result, j + 1);
+                _result[j] = "Customer " + customer + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
                 j++;
 
             }
