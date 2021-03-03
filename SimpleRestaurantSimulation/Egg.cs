@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
@@ -30,25 +26,27 @@ namespace SimpleRestaurantSimulation
 
         }
 
-        public void DiscardShell()
+        private void DiscardShell()
         {
 
         }
 
-        //TODO: When this Dispose method will be run?
+        //Dispose method will be run on ending of 'using' block.
         public void Dispose()
         {
             if (!this.disposed)
             {
                 this.DiscardShell();
             }
-            this.disposed = true;
-            GC.SuppressFinalize(this);
+            this.disposed = true;           
         }
 
-        ~Egg()
+        public override void Obtain()
         {
-            this.Dispose();
+        }
+
+        public override void Serve()
+        {
         }
     }
 }

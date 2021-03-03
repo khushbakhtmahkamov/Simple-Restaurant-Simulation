@@ -15,10 +15,10 @@ namespace SimpleRestaurantSimulation
     {
         Server server = new Server();
         Cook cook = new Cook();
-        
+
         public Form1()
         {
-            server.Ready +=  cook.Process;
+            server.Ready += cook.Process;
             cook.Processed += server.Serve;
             InitializeComponent();
         }
@@ -28,27 +28,25 @@ namespace SimpleRestaurantSimulation
             try
             {
                 menu drink = (menu)Enum.Parse(typeof(menu), typeDrink.SelectedItem.ToString());
-                server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink,customerName.Text);
+                server.Receive(int.Parse(quantityChicken.Text), int.Parse(quantityEgg.Text), drink, customerName.Text);
             }
             catch (Exception ex)
             {
                 textResult.Text = ex.Message;
             }
-            
+
         }
-        
+
         private void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try
             {
-               
                 server.Send();
             }
             catch (Exception ex)
             {
                 textResult.Text = ex.Message;
             }
-            
         }
 
         private void serveFoodCustomers_Click(object sender, EventArgs e)
@@ -73,7 +71,7 @@ namespace SimpleRestaurantSimulation
             {
                 textResult.Text = ex.Message;
             }
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,7 +81,7 @@ namespace SimpleRestaurantSimulation
                 typeDrink.Items.Add(((menu)i).ToString());
             }
             typeDrink.SelectedIndex = 0;
-            
+
         }
     }
 }

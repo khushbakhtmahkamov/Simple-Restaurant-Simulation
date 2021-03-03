@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleRestaurantSimulation
+﻿namespace SimpleRestaurantSimulation
 {
-    abstract class CookedFood : MenuItem
+    abstract class CookedFood : IMenuItem
     {
         public int quantity;
         public CookedFood(int quantity) : base()
@@ -16,16 +10,9 @@ namespace SimpleRestaurantSimulation
 
         public int GetQuantity() => this.quantity;
 
-        //TODO: Obtain and Serve method should be abstract method in this class
-        public override void Obtained()
-        {
+        public abstract void Obtain();
 
-        }
-
-        public override void Served()
-        {
-           
-        }
+        public abstract void Serve();
 
         public abstract void Cook();
     }

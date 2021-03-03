@@ -4,34 +4,29 @@ using System.Collections.Generic;
 
 namespace SimpleRestaurantSimulation
 {
-    class TableRequests:IEnumerable
+    class TableRequests : IEnumerable
     {
-        Dictionary<string, List<ItemInterface>> menuItem = new Dictionary<string, List<ItemInterface>>();
-        
-        public void Add<T>(string customer) where T : ItemInterface
+        Dictionary<string, List<IMenuItem>> menuItem = new Dictionary<string, List<IMenuItem>>();
+
+        public void Add<T>(string customer) where T : IMenuItem
         {
             Type type = typeof(T);
-            List<ItemInterface> order = new List<ItemInterface>();
-            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
+            List<IMenuItem> order = new List<IMenuItem>();
+            foreach (KeyValuePair<string, List<IMenuItem>> keyValue in menuItem)
             {
                 if (keyValue.Key == customer)
                 {
                     order = keyValue.Value;
                 }
             }
-            
-            
+
+            IMenuItem menu;
             if (type == typeof(Egg) || type == typeof(Chicken))
-            {
-                object o = Activator.CreateInstance(type,new Object[] { 1});
-                order.Add((ItemInterface)o);
-            }
+                menu = (IMenuItem)Activator.CreateInstance(type, new Object[] { 1 });
             else
-            {
-                object o = Activator.CreateInstance(type);
-                order.Add((ItemInterface)o);
-               
-            }
+                menu = (IMenuItem)Activator.CreateInstance(type);
+
+            order.Add(menu);
 
             menuItem[customer] = order;
         }
@@ -39,9 +34,9 @@ namespace SimpleRestaurantSimulation
         public List<CookedFood> Get<T>() where T : CookedFood
         {
             List<CookedFood> list = new List<CookedFood>();
-            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
+            foreach (KeyValuePair<string, List<IMenuItem>> keyValue in menuItem)
             {
-                foreach (ItemInterface it in keyValue.Value)
+                foreach (IMenuItem it in keyValue.Value)
                 {
                     if (it.GetType().Equals(typeof(T)))
                     {
@@ -52,20 +47,12 @@ namespace SimpleRestaurantSimulation
             return list;
         }
 
-        public IEnumerator<string> GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            foreach (KeyValuePair<string, List<ItemInterface>> keyValue in menuItem)
-            {
-                yield return keyValue.Key;
-            }
+            return menuItem.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-           return this.GetEnumerator();
-        }
-
-        public List<ItemInterface> this[string customer]
+        public List<IMenuItem> this[string customer]
         {
             get
             {

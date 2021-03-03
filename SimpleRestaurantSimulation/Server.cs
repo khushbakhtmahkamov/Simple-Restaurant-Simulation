@@ -7,27 +7,24 @@ namespace SimpleRestaurantSimulation
     {
         public delegate void ReadyDelegate(TableRequests tr);
         public event ReadyDelegate Ready;
-        int numberObject = 0;
-        private TableRequests tr; 
+        bool isTableRequestCreated = false;
+        private TableRequests tr;
         private string[] _result;
 
         public string[] Result
         {
             get
             {
-               return _result;
+                return _result;
             }
-        }
-        public Server()
-        {
         }
 
         public void Receive(int numberChicken, int numberEgg, menu typeDrink, string customerName)
         {
-            if (numberObject == 0)
+            if (!isTableRequestCreated)
             {
                 tr = new TableRequests();
-                numberObject = 1;
+                isTableRequestCreated = true;
             }
 
             for (int i = 0; i < numberChicken; i++)
@@ -35,7 +32,7 @@ namespace SimpleRestaurantSimulation
                 tr.Add<Chicken>(customerName);
             }
 
-           
+
             for (int i = 0; i < numberEgg; i++)
             {
                 tr.Add<Egg>(customerName);
@@ -60,70 +57,48 @@ namespace SimpleRestaurantSimulation
 
         public void Send()
         {
-            if (numberObject == 0)
+            if (!isTableRequestCreated)
             {
                 throw new NullReferenceException("Order not added!");
             }
             Ready(tr);
         }
-        
+
         public void Serve()
         {
             _result = new string[0];
-            List<ItemInterface> menuItem;
+            
             int j = 0;
-            foreach (string customer in tr)
+            foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
             {
-                menuItem = tr[customer];
                 int numberChiken = 0;
                 int numberEgg = 0;
-                menu drink = menu.NoDrink;
                 string drinkAll = "";
-                foreach (ItemInterface order in menuItem)
+                foreach (IMenuItem order in customerMenus.Value)
                 {
 
                     if (order is Chicken)
-                    {
-                        Chicken chicken = (Chicken)order;
-                        numberChiken += chicken.GetQuantity();
-                    }
+                        numberChiken += ((Chicken)order).GetQuantity();
                     else if (order is Egg)
-                    {
-                        Egg egg = (Egg)order;
-                        numberEgg += egg.GetQuantity();
-                    }
-                    else
-                    {
-                        if (order is CocaCola)
-                        {
-                            drink = menu.Cola;
-                            drinkAll = drinkAll + drink + ",";
-                        }
+                        numberEgg += ((Egg)order).GetQuantity();
+                    else if (order is CocaCola)
+                        drinkAll = drinkAll + menu.Cola + ",";
+                    else if (order is Pepsi)
+                        drinkAll = drinkAll + menu.Pepsi + ",";
+                    else if (order is Tea)
+                        drinkAll = drinkAll + menu.Tea + ",";
 
-                        if (order is Pepsi)
-                        {
-                            drink = menu.Pepsi;
-                            drinkAll = drinkAll + drink + ",";
-                        }
-
-                        if (order is Tea)
-                        {
-                            drink = menu.Tea;
-                            drinkAll = drinkAll + drink + ",";
-                        }
-                    }
-
+                    order.Serve();
                 }
 
                 if (drinkAll == "")
                     drinkAll = menu.NoDrink.ToString();
 
                 Array.Resize(ref _result, j + 1);
-                _result[j] = "Customer " + customer + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
+                _result[j] = "Customer " + customerMenus.Key + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
                 j++;
-
             }
-            numberObject = 0;
+            isTableRequestCreated = true;
         }
     }
 }

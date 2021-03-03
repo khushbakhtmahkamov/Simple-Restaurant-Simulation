@@ -1,24 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleRestaurantSimulation
+﻿namespace SimpleRestaurantSimulation
 {
-    abstract class Drink : MenuItem
+    abstract class Drink : IMenuItem
     {
-        public Drink() : base()
-        {
-        }
+        public abstract void Obtain();
 
-        //TODO: Obtain and Serve methods should be abstract in this class
-        public override void Obtained()
-        {
-        }
-
-        public override void Served()
-        {
-        }
+        public abstract  void Serve();
     }
 }

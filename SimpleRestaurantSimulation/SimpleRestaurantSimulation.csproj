@@ -57,8 +57,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemInterface.cs" />
-    <Compile Include="MenuItem.cs" />
+    <Compile Include="IMenuItem.cs" />
     <Compile Include="Pepsi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
