@@ -2,6 +2,7 @@
 
 namespace SimpleRestaurantSimulation
 {
+
     class Egg : CookedFood, IDisposable
     {
         private int? quality = -1;
@@ -30,10 +31,9 @@ namespace SimpleRestaurantSimulation
         {
 
         }
-
-        //Dispose method will be run on ending of 'using' block.
+        
         public void Dispose()
-        {
+        {           
             if (!this.disposed)
             {
                 this.DiscardShell();
@@ -47,6 +47,19 @@ namespace SimpleRestaurantSimulation
 
         public override void Serve()
         {
+        }
+
+        public override void Prepare()
+        {
+            try
+            {
+                this.Obtain();
+                this.Crack();
+            }
+            catch
+            {
+            }
+            this.Cook();
         }
     }
 }

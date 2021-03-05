@@ -98,7 +98,7 @@ namespace SimpleRestaurantSimulation
                 _result[j] = "Customer " + customerMenus.Key + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
                 j++;
             }
-            isTableRequestCreated = true;
+            isTableRequestCreated = false;
         }
     }
 }

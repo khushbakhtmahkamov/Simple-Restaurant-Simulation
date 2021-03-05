@@ -11,32 +11,15 @@ namespace SimpleRestaurantSimulation
         {
             List<CookedFood> menuItems;
 
-            //TODO: Agar hamin proccessi puxtani chicken va egg-ro ba xudi classhoi Chicken va Egg implement kuned dar in metodi Process() code tamoman kam meshavad.
-            menuItems = tr.Get<Chicken>();
+            menuItems = tr.Get<CookedFood>();
             foreach (IMenuItem menuItem in menuItems)
             {
                 Chicken chickOrder = (Chicken)menuItem;
-                chickOrder.Obtain();
-                chickOrder.CutUp();
-                chickOrder.Cook();
-            }
-
-            menuItems = tr.Get<Egg>();
-            foreach (IMenuItem menuItem in menuItems)
-            {
+                chickOrder.Prepare();
                 using (Egg eggOrder = (Egg)menuItem)
                 {
-                    try
-                    {
-                        eggOrder.Obtain();
-                        eggOrder.Crack();
-                    }
-                    catch
-                    {
-                    }
-                    eggOrder.Cook();
+                    eggOrder.Prepare();
                 }
-
             }
 
             Processed();

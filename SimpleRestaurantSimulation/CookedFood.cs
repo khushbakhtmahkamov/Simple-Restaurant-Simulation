@@ -15,5 +15,7 @@
         public abstract void Serve();
 
         public abstract void Cook();
+
+        public abstract void Prepare();
     }
 }

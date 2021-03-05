@@ -76,7 +76,7 @@ namespace SimpleRestaurantSimulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < Enum.GetValues(typeof(menu)).Length; i++)
+            for(int i = 0; i < Enum.GetValues(typeof(menu)).Length; i++)
             {
                 typeDrink.Items.Add(((menu)i).ToString());
             }
