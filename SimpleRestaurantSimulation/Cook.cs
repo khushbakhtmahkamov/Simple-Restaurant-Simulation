@@ -10,6 +10,7 @@ namespace SimpleRestaurantSimulation
         public void Process(TableRequests tr)
         {
             List<CookedFood> menuItems;
+            //TODO: menuItems is always empty. Please debug and fix this problem.
 
             menuItems = tr.Get<CookedFood>();
             foreach (IMenuItem menuItem in menuItems)
