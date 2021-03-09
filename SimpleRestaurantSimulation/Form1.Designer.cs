@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.customerName = new System.Windows.Forms.TextBox();
             this.receiveRequestCustomer = new System.Windows.Forms.Button();
             this.typeDrink = new System.Windows.Forms.ComboBox();
             this.quantityEgg = new System.Windows.Forms.TextBox();
@@ -39,8 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textResult = new System.Windows.Forms.TextBox();
             this.sendCustomerRequestsCook = new System.Windows.Forms.Button();
-            this.serveFoodCustomers = new System.Windows.Forms.Button();
-            this.customerName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +60,13 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
+            // 
+            // customerName
+            // 
+            this.customerName.Location = new System.Drawing.Point(292, 117);
+            this.customerName.Name = "customerName";
+            this.customerName.Size = new System.Drawing.Size(121, 26);
+            this.customerName.TabIndex = 6;
             // 
             // receiveRequestCustomer
             // 
@@ -151,29 +157,11 @@
             this.sendCustomerRequestsCook.UseVisualStyleBackColor = true;
             this.sendCustomerRequestsCook.Click += new System.EventHandler(this.sendCustomerRequestsCook_Click);
             // 
-            // serveFoodCustomers
-            // 
-            this.serveFoodCustomers.Location = new System.Drawing.Point(84, 260);
-            this.serveFoodCustomers.Name = "serveFoodCustomers";
-            this.serveFoodCustomers.Size = new System.Drawing.Size(318, 30);
-            this.serveFoodCustomers.TabIndex = 9;
-            this.serveFoodCustomers.Text = "Serve prepared food to the Customers";
-            this.serveFoodCustomers.UseVisualStyleBackColor = true;
-            this.serveFoodCustomers.Click += new System.EventHandler(this.serveFoodCustomers_Click);
-            // 
-            // customerName
-            // 
-            this.customerName.Location = new System.Drawing.Point(292, 117);
-            this.customerName.Name = "customerName";
-            this.customerName.Size = new System.Drawing.Size(121, 26);
-            this.customerName.TabIndex = 6;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 469);
-            this.Controls.Add(this.serveFoodCustomers);
             this.Controls.Add(this.sendCustomerRequestsCook);
             this.Controls.Add(this.textResult);
             this.Controls.Add(this.label3);
@@ -204,7 +192,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button sendCustomerRequestsCook;
-        private System.Windows.Forms.Button serveFoodCustomers;
         private System.Windows.Forms.TextBox customerName;
     }
 }

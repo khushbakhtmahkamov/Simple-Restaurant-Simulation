@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -49,7 +50,7 @@ namespace SimpleRestaurantSimulation
 
         public IEnumerator GetEnumerator()
         {
-            return menuItem.GetEnumerator();
+            return menuItem.OrderBy(M=>M.Key).GetEnumerator();
         }
 
         public List<IMenuItem> this[string customer]

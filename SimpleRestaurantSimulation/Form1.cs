@@ -18,8 +18,8 @@ namespace SimpleRestaurantSimulation
 
         public Form1()
         {
-            server.Ready += cook.Process;
-            cook.Processed += server.Serve;
+            //server.Ready += cook.Process;
+            //cook.Processed += server.Serve;
             InitializeComponent();
         }
 
@@ -37,11 +37,16 @@ namespace SimpleRestaurantSimulation
 
         }
 
-        private void sendCustomerRequestsCook_Click(object sender, EventArgs e)
+        private async void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try
             {
                 server.Send();
+                await cook.Process(server.Tr);
+                await server.Serve();
+                showResult();
+              
+                
             }
             catch (Exception ex)
             {
@@ -49,7 +54,7 @@ namespace SimpleRestaurantSimulation
             }
         }
 
-        private void serveFoodCustomers_Click(object sender, EventArgs e)
+        private void showResult()
         {
             try
             {
@@ -71,7 +76,6 @@ namespace SimpleRestaurantSimulation
             {
                 textResult.Text = ex.Message;
             }
-
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -1,29 +1,34 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SimpleRestaurantSimulation
 {
     class Cook
     {
-        public delegate void ProcessedDelegate();
-        public event ProcessedDelegate Processed;
-
-        public void Process(TableRequests tr)
+        public Task Process(TableRequests tr)
         {
-            List<CookedFood> menuItems;
-            //TODO: menuItems is always empty. Please debug and fix this problem.
+            Task t = Task.Run(() =>
+              {
+                  System.Threading.Thread.Sleep(4000);
+                  List<CookedFood> menuItems;
 
-            menuItems = tr.Get<CookedFood>();
-            foreach (IMenuItem menuItem in menuItems)
-            {
-                Chicken chickOrder = (Chicken)menuItem;
-                chickOrder.Prepare();
-                using (Egg eggOrder = (Egg)menuItem)
-                {
-                    eggOrder.Prepare();
-                }
-            }
+                  menuItems = tr.Get<Chicken>();
+                  foreach (IMenuItem menuItem in menuItems)
+                  {
+                      Chicken chickOrder = (Chicken)menuItem;
+                      chickOrder.Prepare();
+                  }
 
-            Processed();
+                  menuItems = tr.Get<Egg>();
+                  foreach (IMenuItem menuItem in menuItems)
+                  {
+                      using (Egg eggOrder = (Egg)menuItem)
+                      {
+                          eggOrder.Prepare();
+                      }
+                  }
+              });
+            return t;
         }
     }
 }
