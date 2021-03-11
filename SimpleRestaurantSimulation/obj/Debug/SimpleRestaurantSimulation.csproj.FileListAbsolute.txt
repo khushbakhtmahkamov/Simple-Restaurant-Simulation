@@ -45,3 +45,13 @@ C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimul
 C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
 C:\Users\KHUSHBAKHT\Desktop\srp\SimpleRestaurantSimulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb
 C:\GitHubRepos\CSharpTraining\khushbakhtmahkamov\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojAssemblyReference.cache
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe.config
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.exe
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\bin\Debug\SimpleRestaurantSimulation.pdb
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csprojAssemblyReference.cache
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Form1.resources
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.Properties.Resources.resources
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.GenerateResource.cache
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.csproj.CoreCompileInputs.cache
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.exe
+C:\GitRepos\CSharp training\khushbakhtmahkamov\Simple-Restaurant-Simulation\SimpleRestaurantSimulation\obj\Debug\SimpleRestaurantSimulation.pdb

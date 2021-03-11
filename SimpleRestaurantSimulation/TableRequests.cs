@@ -11,6 +11,7 @@ namespace SimpleRestaurantSimulation
 
         public void Add<T>(string customer) where T : IMenuItem
         {
+            //TODO: This method has some extra code. Can you refactor this method?
             Type type = typeof(T);
             List<IMenuItem> order = new List<IMenuItem>();
             foreach (KeyValuePair<string, List<IMenuItem>> keyValue in menuItem)
@@ -50,7 +51,7 @@ namespace SimpleRestaurantSimulation
 
         public IEnumerator GetEnumerator()
         {
-            return menuItem.OrderBy(M=>M.Key).GetEnumerator();
+            return menuItem.OrderBy(M => M.Key).GetEnumerator();
         }
 
         public List<IMenuItem> this[string customer]

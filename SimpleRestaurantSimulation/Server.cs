@@ -109,7 +109,7 @@ namespace SimpleRestaurantSimulation
                 isTableRequestCreated = false;
             });
             return t;
-            
+
         }
     }
 }

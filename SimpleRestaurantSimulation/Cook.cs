@@ -12,6 +12,7 @@ namespace SimpleRestaurantSimulation
                   System.Threading.Thread.Sleep(4000);
                   List<CookedFood> menuItems;
 
+                  //TODO: Can we merge this 2 foreach block and use CookedFood type
                   menuItems = tr.Get<Chicken>();
                   foreach (IMenuItem menuItem in menuItems)
                   {
