@@ -16,7 +16,7 @@ namespace SimpleRestaurantSimulation
 
         public override void Cook()
         {
-
+            
         }
 
         public override void Obtain()

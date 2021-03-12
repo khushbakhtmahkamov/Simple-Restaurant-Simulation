@@ -11,15 +11,15 @@ using System.Windows.Forms;
 namespace SimpleRestaurantSimulation
 {
     enum menu { NoDrink, Tea, Cola, Pepsi };
+    enum status { Busy, Free };
     public partial class Form1 : Form
     {
         Server server = new Server();
         Cook cook = new Cook();
+        Cook cook2 = new Cook();
 
         public Form1()
         {
-            //server.Ready += cook.Process;
-            //cook.Processed += server.Serve;
             InitializeComponent();
         }
 
@@ -41,12 +41,31 @@ namespace SimpleRestaurantSimulation
         {
             try
             {
-                server.Send();
-                await cook.Process(server.Tr);
-                await server.Serve();
-                showResult();
-              
-                
+                textResult.Text = "";
+
+                if (server.Tr == null)
+                {
+                    throw new NullReferenceException("order not sent to the Cook");
+                }
+
+                if (cook.Status == status.Busy)
+                {
+                    cook2.Tr = server.Tr;
+                    server.Send();
+                    await cook2.Process();
+                    await server.Serve(cook2.Tr);
+                    showResult();
+                }
+                else
+                {
+                    cook.Tr = server.Tr;
+                    server.Send();
+                    await cook.Process();
+                    await server.Serve(cook.Tr);
+                    showResult();
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -58,7 +77,6 @@ namespace SimpleRestaurantSimulation
         {
             try
             {
-                textResult.Text = "";
                 string[] result = server.Result;
                 if (result == null || result.Length == 0)
                 {
@@ -71,6 +89,7 @@ namespace SimpleRestaurantSimulation
                 }
 
                 textResult.AppendText("Please enjoy your food!");
+                textResult.AppendText(Environment.NewLine);
             }
             catch (Exception ex)
             {

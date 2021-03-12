@@ -68,9 +68,10 @@ namespace SimpleRestaurantSimulation
             {
                 throw new NullReferenceException("Order not added!");
             }
+            isTableRequestCreated = false;
         }
 
-        public Task Serve()
+        public Task Serve(TableRequests tr)
         {
             Task t = Task.Run(() =>
             {
@@ -78,7 +79,7 @@ namespace SimpleRestaurantSimulation
                 _result = new string[0];
 
                 int j = 0;
-                foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in _tr)
+                foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
                 {
                     int numberChiken = 0;
                     int numberEgg = 0;
@@ -106,7 +107,7 @@ namespace SimpleRestaurantSimulation
                     _result[j] = "Customer " + customerMenus.Key + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
                     j++;
                 }
-                isTableRequestCreated = false;
+                
             });
             return t;
 

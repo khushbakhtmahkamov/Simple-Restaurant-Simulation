@@ -24,7 +24,7 @@ namespace SimpleRestaurantSimulation
 
         public override void Cook()
         {
-
+            
         }
 
         private void DiscardShell()
