@@ -78,6 +78,7 @@ namespace SimpleRestaurantSimulation
                 System.Threading.Thread.Sleep(4000);
                 _result = new string[0];
 
+                //TODO: Can you try to use LINQ instead if these 2 'foreach' ?
                 int j = 0;
                 foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
                 {

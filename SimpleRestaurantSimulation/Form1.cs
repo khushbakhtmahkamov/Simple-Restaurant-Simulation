@@ -58,6 +58,7 @@ namespace SimpleRestaurantSimulation
                 }
                 else
                 {
+                    //TODO: What if the 2nd cook is busy
                     cook.Tr = server.Tr;
                     server.Send();
                     await cook.Process();

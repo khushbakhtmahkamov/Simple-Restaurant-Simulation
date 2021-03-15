@@ -22,6 +22,7 @@ namespace SimpleRestaurantSimulation
         }
         public Task Process()
         {
+            //TODO: Can we use Parallel:Foreach....?
             this.Status = status.Busy;
             Task t = Task.Run(() =>
               {
@@ -31,6 +32,7 @@ namespace SimpleRestaurantSimulation
                   menuItems = _tr.Get<CookedFood>();
                   foreach (IMenuItem menuItem in menuItems)
                   {                      
+                      //TODO:  Instead of this If...Else condition, we should just call Prepare() method of CookedFood
                       if (menuItem is Chicken)
                       {
                           Chicken chickOrder = (Chicken)menuItem;
@@ -43,7 +45,6 @@ namespace SimpleRestaurantSimulation
                               eggOrder.Prepare();
                           }
                       }
-                     
                   }
 
               });

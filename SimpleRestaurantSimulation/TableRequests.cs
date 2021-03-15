@@ -13,9 +13,9 @@ namespace SimpleRestaurantSimulation
         {
             Type type = typeof(T);
             List<IMenuItem> order = new List<IMenuItem>();
-            if(menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Count>0)
-                order=menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Last();
-           
+            if (menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Count > 0)
+                order = menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Last();
+
             IMenuItem menu;
             if (type == typeof(Egg) || type == typeof(Chicken))
                 menu = (IMenuItem)Activator.CreateInstance(type, new Object[] { 1 });
