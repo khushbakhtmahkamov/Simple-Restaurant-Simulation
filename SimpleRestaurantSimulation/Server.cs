@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -79,7 +80,9 @@ namespace SimpleRestaurantSimulation
                 _result = new string[0];
 
                 //TODO: Can you try to use LINQ instead if these 2 'foreach' ?
+                //can`t use linq in TableRequest
                 int j = 0;
+                
                 foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
                 {
                     int numberChiken = 0;

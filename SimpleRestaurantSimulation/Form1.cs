@@ -34,38 +34,39 @@ namespace SimpleRestaurantSimulation
             {
                 textResult.Text = ex.Message;
             }
-
         }
 
         private async void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try
             {
-                textResult.Text = "";
+                //textResult.Text = "";
 
                 if (server.Tr == null)
                 {
                     throw new NullReferenceException("order not sent to the Cook");
                 }
-
-                if (cook.Status == status.Busy)
+                Boolean b = true;
+                TableRequests tr = server.Tr;
+                server.Send();
+                while (b)
                 {
-                    cook2.Tr = server.Tr;
-                    server.Send();
-                    await cook2.Process();
-                    await server.Serve(cook2.Tr);
-                    showResult();
+                    if (cook.Status == status.Free)
+                    {
+                        await cook.Process(tr);
+                        await server.Serve(tr);
+                        showResult();
+                        b = false;
+                    }
+                    else if (cook2.Status == status.Free)
+                    {
+                        await cook2.Process(tr);
+                        await server.Serve(tr);
+                        showResult();
+                        b = false;
+                    }
+                    System.Threading.Thread.Sleep(1000);
                 }
-                else
-                {
-                    //TODO: What if the 2nd cook is busy
-                    cook.Tr = server.Tr;
-                    server.Send();
-                    await cook.Process();
-                    await server.Serve(cook.Tr);
-                    showResult();
-                }
-
 
             }
             catch (Exception ex)

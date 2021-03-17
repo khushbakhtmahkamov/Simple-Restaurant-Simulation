@@ -30,7 +30,7 @@ namespace SimpleRestaurantSimulation
         public List<CookedFood> Get<T>() where T : CookedFood
         {
             List<CookedFood> list = new List<CookedFood>();
-            foreach (KeyValuePair<string, List<IMenuItem>> keyValue in menuItem)
+            foreach (var keyValue in menuItem)
             {
                 foreach (IMenuItem it in keyValue.Value)
                 {

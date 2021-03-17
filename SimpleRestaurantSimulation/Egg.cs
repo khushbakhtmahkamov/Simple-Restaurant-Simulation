@@ -24,7 +24,7 @@ namespace SimpleRestaurantSimulation
 
         public override void Cook()
         {
-            
+            System.Threading.Thread.Sleep(1000);
         }
 
         private void DiscardShell()
