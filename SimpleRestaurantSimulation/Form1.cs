@@ -36,6 +36,31 @@ namespace SimpleRestaurantSimulation
             }
         }
 
+        //TODO: There are 3 tables. Server receives from these customers:
+        //table 1: Customer a: 10 Chicken, 10 egg, Tea
+        //table 2: Customer b: 10 Chicken, 10 egg, Cola
+        //table 3: Customer c: 10 Chicken, 10 egg, Pepsi
+
+        //Server clicks Send button after receiving each customer. 
+        //The result is showing like this now:
+        /*  Customer a is served Cola, 10 chicken, 10 egg
+            Please enjoy your food!
+            Customer b is served Tea, 10 chicken, 10 egg
+            Please enjoy your food!
+            Customer c is served Pepsi 10 chicken, 10 egg
+            Please enjoy your food!
+        */
+        /*But it should show drinks firts. like this:  
+         *  Customer a is served Cola   [Here write "table #1" or "Please enjoy your drink!"]
+         *  Customer b is served Tea    [Here write "table #2" or "Please enjoy your drink!"]
+         *  Customer c is served Pepsi  [Here write "table #3" or "Please enjoy your drink!"]
+         *  Customer a is served 10 chicken, 10 egg
+                Please enjoy your food!
+         *  Customer b is served 10 chicken, 10 egg
+                Please enjoy your food!                
+         *  Customer c is served 10 chicken, 10 egg
+                Please enjoy your food!
+            */
         private async void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try

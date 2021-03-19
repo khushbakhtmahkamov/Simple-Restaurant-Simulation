@@ -13,6 +13,7 @@ namespace SimpleRestaurantSimulation
         {
             Type type = typeof(T);
             List<IMenuItem> order = new List<IMenuItem>();
+            //TODO: there is duplication in If condition and after 'order = '
             if (menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Count > 0)
                 order = menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Last();
 
@@ -47,14 +48,5 @@ namespace SimpleRestaurantSimulation
         {
             return menuItem.OrderBy(M => M.Key).GetEnumerator();
         }
-
-        public List<IMenuItem> this[string customer]
-        {
-            get
-            {
-                return menuItem[customer];
-            }
-        }
-
     }
 }
