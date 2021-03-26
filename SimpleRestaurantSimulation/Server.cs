@@ -72,6 +72,37 @@ namespace SimpleRestaurantSimulation
             isTableRequestCreated = false;
         }
 
+        public void ServeDrink(TableRequests tr)
+        {
+            _result = new string[0];
+                
+            int j = 0;
+            TableRequests tr2 = tr;
+            foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
+            {
+                string drinkAll = "";
+                foreach (IMenuItem order in customerMenus.Value)
+                {
+                    if (order is CocaCola)
+                        drinkAll = drinkAll + menu.Cola + ",";
+                    else if (order is Pepsi)
+                        drinkAll = drinkAll + menu.Pepsi + ",";
+                    else if (order is Tea)
+                        drinkAll = drinkAll + menu.Tea + ",";
+                    order.Serve();
+                }
+
+                if (drinkAll != "")
+                {
+                    Array.Resize(ref _result, j + 1);
+                    _result[j] = "Customer " + customerMenus.Key + " is served " + drinkAll;
+                    j++;
+                }
+                    
+            }
+
+        }
+
         public Task Serve(TableRequests tr)
         {
             Task t = Task.Run(() =>
@@ -82,33 +113,23 @@ namespace SimpleRestaurantSimulation
                 //TODO: Can you try to use LINQ instead of these 2 'foreach' ?
                 //can`t use linq in TableRequest
                 int j = 0;
-                
                 foreach (KeyValuePair<string, List<IMenuItem>> customerMenus in tr)
                 {
+
                     int numberChiken = 0;
                     int numberEgg = 0;
-                    string drinkAll = "";
-                    foreach (IMenuItem order in customerMenus.Value)
+                    
+                   foreach (IMenuItem order in customerMenus.Value)
                     {
                         if (order is Chicken)
                             numberChiken += ((Chicken)order).GetQuantity();
                         else if (order is Egg)
                             numberEgg += ((Egg)order).GetQuantity();
-                        else if (order is CocaCola)
-                            drinkAll = drinkAll + menu.Cola + ",";
-                        else if (order is Pepsi)
-                            drinkAll = drinkAll + menu.Pepsi + ",";
-                        else if (order is Tea)
-                            drinkAll = drinkAll + menu.Tea + ",";
-
                         order.Serve();
                     }
-
-                    if (drinkAll == "")
-                        drinkAll = menu.NoDrink.ToString();
-
+                    
                     Array.Resize(ref _result, j + 1);
-                    _result[j] = "Customer " + customerMenus.Key + " is served " + drinkAll + " " + numberChiken + " chicken, " + numberEgg + " egg";
+                    _result[j] = "Customer " + customerMenus.Key + " is served " + numberChiken + " chicken, " + numberEgg + " egg";
                     j++;
                 }
                 

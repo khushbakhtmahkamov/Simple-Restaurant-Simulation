@@ -36,37 +36,10 @@ namespace SimpleRestaurantSimulation
             }
         }
 
-        //TODO: There are 3 tables. Server receives from these customers:
-        //table 1: Customer a: 10 Chicken, 10 egg, Tea
-        //table 2: Customer b: 10 Chicken, 10 egg, Cola
-        //table 3: Customer c: 10 Chicken, 10 egg, Pepsi
-
-        //Server clicks Send button after receiving each customer. 
-        //The result is showing like this now:
-        /*  Customer a is served Cola, 10 chicken, 10 egg
-            Please enjoy your food!
-            Customer b is served Tea, 10 chicken, 10 egg
-            Please enjoy your food!
-            Customer c is served Pepsi 10 chicken, 10 egg
-            Please enjoy your food!
-        */
-        /*But it should show drinks firts. like this:  
-         *  Customer a is served Cola   [Here write "table #1" or "Please enjoy your drink!"]
-         *  Customer b is served Tea    [Here write "table #2" or "Please enjoy your drink!"]
-         *  Customer c is served Pepsi  [Here write "table #3" or "Please enjoy your drink!"]
-         *  Customer a is served 10 chicken, 10 egg
-                Please enjoy your food!
-         *  Customer b is served 10 chicken, 10 egg
-                Please enjoy your food!                
-         *  Customer c is served 10 chicken, 10 egg
-                Please enjoy your food!
-            */
         private async void sendCustomerRequestsCook_Click(object sender, EventArgs e)
         {
             try
             {
-                //textResult.Text = "";
-
                 if (server.Tr == null)
                 {
                     throw new NullReferenceException("order not sent to the Cook");
@@ -74,20 +47,22 @@ namespace SimpleRestaurantSimulation
                 Boolean b = true;
                 TableRequests tr = server.Tr;
                 server.Send();
+                server.ServeDrink(tr);
+                showResult("drink");
                 while (b)
                 {
                     if (cook.Status == status.Free)
                     {
                         await cook.Process(tr);
                         await server.Serve(tr);
-                        showResult();
+                        showResult("food");
                         b = false;
                     }
                     else if (cook2.Status == status.Free)
                     {
                         await cook2.Process(tr);
                         await server.Serve(tr);
-                        showResult();
+                        showResult("food");
                         b = false;
                     }
                     System.Threading.Thread.Sleep(1000);
@@ -100,7 +75,7 @@ namespace SimpleRestaurantSimulation
             }
         }
 
-        private void showResult()
+        private void showResult(string menu)
         {
             try
             {
@@ -114,8 +89,15 @@ namespace SimpleRestaurantSimulation
                     textResult.AppendText(result[i]);
                     textResult.AppendText(Environment.NewLine);
                 }
-
-                textResult.AppendText("Please enjoy your food!");
+                if (menu == "food")
+                {
+                    textResult.AppendText("Please enjoy your food!");
+                }
+                else
+                {
+                    textResult.AppendText("Please enjoy your drink!");
+                }
+                
                 textResult.AppendText(Environment.NewLine);
             }
             catch (Exception ex)

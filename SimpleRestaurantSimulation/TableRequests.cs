@@ -13,9 +13,9 @@ namespace SimpleRestaurantSimulation
         {
             Type type = typeof(T);
             List<IMenuItem> order = new List<IMenuItem>();
-            //TODO: there is duplication in If condition and after 'order = '
-            if (menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Count > 0)
-                order = menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList().Last();
+            var listMenu = menuItem.Select(m => m).Where(k => k.Key.Equals(customer)).Select(me => me.Value).ToList();
+            if (listMenu.Count > 0)
+                order = listMenu.Last();
 
             IMenuItem menu;
             if (type == typeof(Egg) || type == typeof(Chicken))
